@@ -1,0 +1,1000 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>C语言小项目——学生成绩管理系统 | 惜缘怀古的博客</title><meta name="keywords" content="惜缘怀古，博客"><meta name="author" content="惜缘怀古"><meta name="copyright" content="惜缘怀古"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="stduent.h#ifndef STUDENT_H_INCLUDED #define STUDENT_H_INCLUDED #pragma once #pragma warning(disable:4996)&#x2F;&#x2F;visual studio 支持c语言必备内容 #define FILE_DATA_PATH &quot;E:\\STUDENT.txt&quot;&#x2F;&#x2F;定义存放文件路径为STUDENT.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C语言小项目——学生成绩管理系统">
+<meta property="og:url" content="https://xiyuanhuaigu.gitee.io/2022/03/03/C%E8%AF%AD%E8%A8%80%E5%B0%8F%E9%A1%B9%E7%9B%AE%E2%80%94%E2%80%94%E5%AD%A6%E7%94%9F%E6%88%90%E7%BB%A9%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/index.html">
+<meta property="og:site_name" content="惜缘怀古的博客">
+<meta property="og:description" content="stduent.h#ifndef STUDENT_H_INCLUDED #define STUDENT_H_INCLUDED #pragma once #pragma warning(disable:4996)&#x2F;&#x2F;visual studio 支持c语言必备内容 #define FILE_DATA_PATH &quot;E:\\STUDENT.txt&quot;&#x2F;&#x2F;定义存放文件路径为STUDENT.">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://xiyuanhuaigu.gitee.io/img/Cprogect.jpg">
+<meta property="article:published_time" content="2022-03-03T14:35:44.000Z">
+<meta property="article:modified_time" content="2022-03-03T14:49:09.740Z">
+<meta property="article:author" content="惜缘怀古">
+<meta property="article:tag" content="惜缘怀古，博客">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://xiyuanhuaigu.gitee.io/img/Cprogect.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://xiyuanhuaigu.gitee.io/2022/03/03/C%E8%AF%AD%E8%A8%80%E5%B0%8F%E9%A1%B9%E7%9B%AE%E2%80%94%E2%80%94%E5%AD%A6%E7%94%9F%E6%88%90%E7%BB%A9%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'C语言小项目——学生成绩管理系统',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-03-03 22:49:09'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/2.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/Cprogect.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">惜缘怀古的博客</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">C语言小项目——学生成绩管理系统</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-03-03T14:35:44.000Z" title="发表于 2022-03-03 22:35:44">2022-03-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-03-03T14:49:09.740Z" title="更新于 2022-03-03 22:49:09">2022-03-03</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="C语言小项目——学生成绩管理系统"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="stduent-h"><a href="#stduent-h" class="headerlink" title="stduent.h"></a>stduent.h</h2><pre><code>#ifndef STUDENT_H_INCLUDED
+#define STUDENT_H_INCLUDED
+#pragma once
+#pragma warning(disable:4996)//visual studio 支持c语言必备内容
+#define FILE_DATA_PATH &quot;E:\\STUDENT.txt&quot;//定义存放文件路径为STUDENT.txt文件
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include  &lt;string.h&gt;
+#include &lt;conio.h&gt;
+#define MAX 300//最大录入信息300人
+//学生信息结构体
+struct isStudent
+&#123;
+char name[9]; //姓名
+int number; // 默认学号8位
+float chinese;
+float math;
+float english; //定义三科成绩；
+float average; //定义平均成绩
+char password[20];//定义个人密码
+
+&#125;;
+
+typedef struct isStudent isStudent;
+static isStudent temporary[1];
+isStudent stu[MAX];//学生数量结构体
+int nowStudentNumber;//全局变量，代表当前学生人数
+
+////账号类型结构体
+//struct  account
+//&#123;
+//    int accNumber;//账号为学号
+//    char accPWD[7];//密码
+//    char flag[2]; //账户状态
+//
+//&#125;;
+
+//显示欢迎信息
+void welcome();
+
+//系统界面
+void memu();
+
+//学生系统界面
+void studentInterface(int studentnumber13);
+
+//管理员学生界面
+void adminInterface();
+
+//管理员增加学生信息
+void creatAccount();
+
+//删除学生信息
+void deleteAccount();
+
+//退出系统
+void exitSystem();
+
+//排序学生
+void sort();
+
+//按总成绩排序
+void sortGrade();
+
+//显示所有存储的信息
+void adminShow();
+
+//管理员查看个人信息
+void studentShow();
+
+//写入函数
+void writeIn();
+
+//查找单个信息
+//void searchPersonInformation_asNumber();
+
+//读取文件
+void readOut();
+
+//请求输入学生密码和账号
+void studentInPWD();
+
+//管理员密码登录
+void adminInPWD();
+
+//学生端查看个人信息
+void studentFindShow(int studentnumber);
+
+//学生端修改密码
+void changeTheSecurityCode(int studentNumber13);
+
+//管理员功能界面
+void adminMemu();
+
+#endif // STUDENT_H_INCLUDED
+</code></pre>
+<h2 id="main-c"><a href="#main-c" class="headerlink" title="main.c"></a>main.c</h2><pre><code>#include &lt;stdio.h&gt;
+#include &quot;student.h&quot;
+
+int main()
+&#123;
+    int income;
+    //welcome();//功能：欢迎界面
+    welcome();
+    getch();
+    nowStudentNumber = 0;//将
+    readOut();//读取文件
+    while (1)
+    &#123;
+        system(&quot;cls&quot;);
+        memu();
+        scanf(&quot;%d&quot;, &amp;income);
+        getchar();
+        switch (income)
+        &#123;
+        case 1:
+            adminInPWD();//管理员端登录密码
+            break;
+        case 2:
+            studentInPWD();//学生端登录密码
+            break;
+        case 3:
+            printf(&quot;\t\t\t--------------------------谢谢使用！输入任意键继续--------------------------\n&quot;);
+            getchar();
+            return 0;
+        default:
+            ;
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<h2 id="stduent-c"><a href="#stduent-c" class="headerlink" title="stduent.c"></a>stduent.c</h2><pre><code>/////运行支持库
+#include&lt;stdio.h&gt;
+#include &quot;Student.h&quot;
+#pragma warning(disable:4996)//visual studio 支持c语言必备内容
+
+//欢迎界面
+void welcome()
+&#123;
+    /*
+    printf(&quot;\n\n\n\n\n\n\n\n&quot;);
+    printf(&quot;\t\t\t\t\t*********************************\n&quot;);
+    printf(&quot;\t\t\t\t\t*                               *\n&quot;);
+    printf(&quot;\t\t\t\t\t*                               *\n&quot;);
+    printf(&quot;\t\t\t\t\t*   欢迎进入学生成绩管理系统    *\n&quot;);
+    printf(&quot;\t\t\t\t\t*                               *\n&quot;);
+    printf(&quot;\t\t\t\t\t*                               *\n&quot;);
+    printf(&quot;\t\t\t\t\t*********************************&quot;);
+    */
+printf(&quot;\n\n\n\n\n\n&quot;);
+    printf(&quot;\t\t\t\t   Welcome to the Student achievement management system\n&quot;);
+    printf(&quot;\t\t\t\t\t             ～ (((^^)(^^)))    \n&quot;);
+    printf(&quot;\t\t\t\t\t┌────────────────────────────────────┐\n&quot;);
+    printf(&quot;\t\t\t\t\t│                                    │\n&quot;);
+    printf(&quot;\t\t\t\t\t│                                    │\n&quot;);
+    printf(&quot;\t\t\t\t\t│                                    │\n&quot;);
+    printf(&quot;\t\t\t\t\t│                                    │\n&quot;);
+    printf(&quot;\t\t\t\t\t│     欢迎进入学生成绩管理系统       │\n&quot;);
+    printf(&quot;\t\t\t\t\t│                                    │\n&quot;);
+    printf(&quot;\t\t\t\t\t│                                    │\n&quot;);
+    printf(&quot;\t\t\t\t\t│                                    │\n&quot;);
+    printf(&quot;\t\t\t\t\t│                                    │\n&quot;);
+    printf(&quot;\t\t\t\t\t│                                    │\n&quot;);
+    printf(&quot;\t\t\t\t\t└────────────────────────────────────┘\n&quot;);
+&#125;
+//
+void memu()
+&#123;
+    printf(&quot;\n\n\n\n\n\n&quot;);
+    printf(&quot;\t\t\t\t   Welcome to the Student achievement management system\n&quot;);
+    printf(&quot;\t\t\t\t\t             ～ (((^^)(^^)))    \n&quot;);
+    printf(&quot;\t\t\t\t\t┌────────────────────────────────────┐\n&quot;);
+    printf(&quot;\t\t\t\t\t│                                    │\n&quot;);
+    printf(&quot;\t\t\t\t\t│                                    │\n&quot;);
+    printf(&quot;\t\t\t\t\t│      1.管理员身份登陆!             │\n&quot;);
+    printf(&quot;\t\t\t\t\t│                                    │\n&quot;);
+    printf(&quot;\t\t\t\t\t│                                    │\n&quot;);
+    printf(&quot;\t\t\t\t\t│                                    │\n&quot;);
+    printf(&quot;\t\t\t\t\t│      2.本科生身份登陆!             │\n&quot;);
+    printf(&quot;\t\t\t\t\t│                                    │\n&quot;);
+    printf(&quot;\t\t\t\t\t│                                    │\n&quot;);
+    printf(&quot;\t\t\t\t\t│                                    │\n&quot;);
+    printf(&quot;\t\t\t\t\t│      3.退出系统!                   │\n&quot;);
+    printf(&quot;\t\t\t\t\t│                                    │\n&quot;);
+    printf(&quot;\t\t\t\t\t│                                    │\n&quot;);
+    printf(&quot;\t\t\t\t\t└────────────────────────────────────┘\n&quot;);
+    printf(&quot;\t\t\t\t\t请输入对应的数字选择功能！&quot;);
+&#125;
+
+void adminMemu()
+&#123;/*
+        printf(&quot;\t\t\t\t\t\t-------------------------1.录入学生成绩-------------------------\n&quot;);
+        printf(&quot;\n&quot;);
+        printf(&quot;\t\t\t\t\t\t-------------------------2.查找学生信息-------------------------\n&quot;);
+        printf(&quot;\n&quot;);
+        printf(&quot;\t\t\t\t\t\t-------------------------3.删除学生信息-------------------------\n&quot;);
+        printf(&quot;\n&quot;);
+        printf(&quot;\t\t\t\t\t\t-------------------------4.按照总成绩排序-----------------------\n&quot;);
+        printf(&quot;\n&quot;);
+        printf(&quot;\t\t\t\t\t\t-------------------------5.按学号排序---------------------------\n&quot;);
+        printf(&quot;\n&quot;);
+        printf(&quot;\t\t\t\t\t\t-------------------------6.统计学生总数-------------------------\n&quot;);
+        printf(&quot;\n&quot;);
+        printf(&quot;\t\t\t\t\t\t-------------------------0.退出系统-----------------------------\n&quot;);
+        */
+    printf(&quot;\n\n\n\n\n\n&quot;);
+    printf(&quot;\t\t\t\t   Welcome to the Student achievement management system\n&quot;);
+    printf(&quot;\t\t\t\t\t             ～ (((^^)(^^)))    \n&quot;);
+    printf(&quot;\t\t\t\t\t┌────────────────────┸───────────────┐\n&quot;);
+    printf(&quot;\t\t\t\t\t│                                    │\n&quot;);
+    printf(&quot;\t\t\t\t\t│                                    │\n&quot;);
+    printf(&quot;\t\t\t\t\t│      1.录入学生成绩                │\n&quot;);
+    printf(&quot;\t\t\t\t\t│      2.查找学生信息                │\n&quot;);
+    printf(&quot;\t\t\t\t\t│      3.删除学生信息                │\n&quot;);
+    printf(&quot;\t\t\t\t\t│      4.按照总成绩排序              │\n&quot;);
+    printf(&quot;\t\t\t\t\t│      5.按学号排序                  │\n&quot;);
+    printf(&quot;\t\t\t\t\t│      6.统计学生总数                │\n&quot;);
+    printf(&quot;\t\t\t\t\t│      0.退出系统                    │\n&quot;);
+    printf(&quot;\t\t\t\t\t│                                    │\n&quot;);
+    printf(&quot;\t\t\t\t\t│                                    │\n&quot;);
+    printf(&quot;\t\t\t\t\t└────────────────────────────────────┘\n&quot;);
+    printf(&quot;\t\t\t\t\t请输入对应的数字选择功能！&quot;);
+&#125;
+//写入文件
+void writeIn()//写入文件
+&#123;
+
+    char ch;
+
+    FILE* pFile;
+
+    pFile = fopen(&quot;STUDENT.txt&quot;, &quot;w&quot;);//状态，覆写
+
+    if (pFile == NULL)
+    &#123;
+        printf(&quot;\t\t\t写入文件失败。\n&quot;);
+        printf(&quot;\t\t\t文件保存错误。\n&quot;);
+        printf(&quot;\t\t\t输入任意键退出。\n&quot;);
+
+        getch();
+
+        return 0;//以不正常状态退出
+    &#125;
+    else
+    &#123;
+
+        //将所有内容写入文件
+        for (int i = 0; i &lt; nowStudentNumber; i++)
+        &#123;
+            fprintf(pFile, &quot;%-9s %-10d %-6.f %-6.f %-6.f %-6.f %-22s\n&quot;, stu[i].name, stu[i].number, stu[i].chinese, stu[i].math, stu[i].english, stu[i].average, stu[i].password);
+        &#125;
+
+        fclose(pFile);
+
+        getchar();
+
+    &#125;
+&#125;
+
+//读取文件
+void readOut()//从文件读取
+&#123;
+    int i = 0;
+
+    FILE* pFile;
+    pFile = fopen(&quot;STUDENT.txt&quot;, &quot;r&quot;);//此处需要更换文件路径
+
+    if (pFile == NULL)
+    &#123;
+        printf(&quot;\t\t\t打开文件失败。\n&quot;);
+        return;
+    &#125;
+    else
+    &#123;
+        while (fscanf(pFile, &quot;%s %d %f %f %f %f %s\n&quot;, &amp;stu[i].name, &amp;stu[i].number, &amp;stu[i].chinese, &amp;stu[i].math, &amp;stu[i].english, &amp;stu[i].average, &amp;stu[i].password)!=EOF)//读取一组数据后指针指向下一组数据，并且判断是否指向最后一行
+        &#123;
+            //fscanf(pFile, &quot;%s %d %f %f %f %f %s\n&quot;, &amp;stu[i].name, &amp;stu[i].number, &amp;stu[i].chinese, &amp;stu[i].math, &amp;stu[i].english, &amp;stu[i].average, &amp;stu[i].password);
+            i++;
+        &#125;
+        nowStudentNumber = i;//此处为记录有多少条信息,后可改为宏变
+        i--;
+        fclose(pFile);                //关闭文件；
+    &#125;
+&#125;
+
+////管理员端接入
+//管理员界面
+void adminInterface()//.管理员界面
+&#123;
+    while (1)
+    &#123;
+loop2:       system(&quot;cls&quot;);
+        adminMemu();
+        int ch = 9;//读取选择
+        scanf(&quot;%d&quot;,&amp;ch);
+        getchar();
+        switch (ch)
+        &#123;
+        case 1://1. 录入学生成绩
+            creatAccount();
+            break;
+        case 2://2.查找学生信息
+            studentShow();//、
+            break;
+        case 3://3.删除学生信息
+            deleteAccount();
+            break;
+        case 4://4.按总成绩排序
+            sortGrade();//ChangeStudent();
+            break;
+        case 5://5.按照学号排序
+            sort();//RankStudent();
+            break;
+        case 6://6.统计学生总数
+            printf(&quot;\t&quot;);
+            printf(&quot;\t\t\t\t当前学生总数为：%d\n&quot;,nowStudentNumber);
+            printf(&quot;\t\t\t\t\t-----------按任意键返回菜单------------&quot;);
+            getch();
+            break;
+        case 0://退出系统
+            exit(0);
+        default:
+            ;
+        &#125;
+        //getchar();
+    &#125;
+    return 0;
+&#125;
+
+//管理员密码登录
+
+void adminInPWD()
+&#123;
+
+loop:    system(&quot;cls&quot;);
+    printf(&quot;\n\n\n\n\n\n&quot;);
+    printf(&quot;\t\t\t请输入管理员账号:&quot;);
+    char adminnumberin[20];
+    scanf(&quot;%s&quot;, adminnumberin);
+    char passwordin[20];//输入的密码
+    char admin[6] = &quot;admin&quot;;
+    if (strcmp(admin, adminnumberin) == 0)
+    &#123;
+
+
+loop1:        system(&quot;cls&quot;);
+        printf(&quot;\n\n\n\n\n\n&quot;);
+        printf(&quot;\t\t\t请输入密码:&quot;);
+        scanf(&quot;%s&quot;, passwordin);
+        if (strcmp(admin, passwordin) == 0)
+        &#123;
+            adminInterface();
+        &#125;
+        else
+        &#123;
+            printf(&quot;\n\n\n\n\n\n&quot;);
+            printf(&quot;\t\t\t密码输入错误！！&quot;);
+            sleep(1);
+        &#125;
+        goto loop1;
+
+    &#125;
+    else&#123;
+        printf(&quot;\n\n\n\n\n\n&quot;);
+        printf(&quot;\t\t\t账号输入错误！！&quot;);
+        sleep(1);
+        goto loop;
+    &#125;
+&#125;
+
+//管理员添加学生信息
+
+void creatAccount()
+&#123;
+    int i = nowStudentNumber;
+
+    system(&quot;cls&quot;);
+
+    printf(&quot;\n\n\n\n\n\n&quot;);
+    printf(&quot;\t\t\t\t\t\t请输入学生学号:&quot;);
+    scanf(&quot;%d&quot;, &amp;temporary[i].number);
+    printf(&quot;\n\n\t\t\t\t\t\t请输入学生姓名:&quot;);
+    scanf(&quot;%s&quot;, &amp;temporary[i].name);
+    printf(&quot;\n\n\t\t\t\t\t\t请输入语文，数学，英语三科成绩\n&quot;);
+    printf(&quot;\t\t\t\t\t\t&quot;);
+    scanf(&quot;%f %f %f&quot;, &amp;temporary[i].chinese, &amp;temporary[i].math, &amp;temporary[i].english);
+    temporary[i].average = temporary[i].chinese + temporary[i].math + temporary[i].english;
+
+    strcpy(temporary[i].password, &quot;123456&quot;);
+
+    printf(&quot;\n\n\t\t\t\t\t\t学生的默认密码为123456!&quot;);
+
+    //strcpy(stu[nowStudentNumber], temporary[0]);
+    stu[i] = temporary[i];
+
+    nowStudentNumber = i + 1;
+
+    writeIn();
+    readOut();
+
+&#125;
+
+//管理员查询单个信息
+
+void studentShow()
+&#123;
+    readOut();
+
+    int flag, s;//此处变量用来接收查询的学号
+    char name[10];//此处用来接收查询的学生姓名
+    int flag1 = 0;//此处变量用来无法查询到学号时返回变量
+    int number;//此处接收用户个数
+    system(&quot;cls&quot;);
+    printf(&quot;\n\n\n\n&quot;);
+    printf(&quot;\t\t\t按照学号查询，请按“1”\n&quot;);
+    printf(&quot;\t\t\t按照姓名查询，请按“2”\n&quot;);
+    printf(&quot;\t\t\t返回上一菜单，请按“0”\n&quot;);
+    printf(&quot;\t\t\t请输入查询方式\n&quot;);//按照不同方式进行查询
+    printf(&quot;\t\t\t&quot;);
+    scanf(&quot;%d&quot;, &amp;flag);
+    if(0 == flag)
+    return ;
+    if (1 == flag)
+    &#123;
+        system(&quot;cls&quot;);
+        printf(&quot;\n\n\n\n&quot;);
+        printf(&quot;\t\t\t--------------------------请输入要查询的学号:--------------------------\n&quot;);
+        printf(&quot;\t\t\t&quot;);
+        scanf(&quot;%d&quot;, &amp;s);
+
+        number = nowStudentNumber;
+        for (int i = 0; i &lt; number; i++)
+        &#123;
+            if (stu[i].number == s)
+            &#123;
+        system(&quot;cls&quot;);
+                printf(&quot;\n\n\n&quot;);
+                printf(&quot;\t\t\t%-9s %-9s %-6s %-6s %-6s %-6s\n&quot;, &quot;名字&quot;, &quot;学号&quot;, &quot;语文&quot;, &quot;数学&quot;, &quot;英语&quot;, &quot;总分&quot;);
+                printf(&quot;\t\t\t-------------------------------------------------------------------\n&quot;);
+                printf(&quot;\t\t\t%-9s %-9d %-6.1f %-6.1f %-6.1f %-6.1f\n&quot;, stu[i].name, stu[i].number, stu[i].chinese, stu[i].math, stu[i].english, stu[i].average);
+                printf(&quot;\n\n\n&quot;);
+                printf(&quot;\t\t\t-------------------------按任意键返回上一界面----------------------\n&quot;);
+                getch();
+
+                flag1 = 1;
+                return;
+            &#125;
+
+        &#125;
+
+        if (flag1 == 0)
+        &#123;
+            printf(&quot;\n\n&quot;);
+            printf(&quot;\t\t\t--------------------------查询不到当前学生信息--------------------------\n&quot;);
+            printf(&quot;\t\t\t------------------------------按任意键返回------------------------------&quot;);
+            getch();
+
+        &#125;
+    &#125;
+
+    if (2 == flag)
+    &#123;
+        printf(&quot;\t\t\t--------------------------请输入要查询的学生姓名：--------------------------\n&quot;);
+
+        scanf(&quot;%s&quot;, name);
+
+        number = nowStudentNumber;   //此处需补
+        for (int i = 0; i &lt; number; i++)
+        &#123;
+            if (0 == strcmp(stu[i].name, name))
+            &#123;
+                system(&quot;cls&quot;);
+                printf(&quot;\n\n\n&quot;);
+                printf(&quot;\t\t\t%-9s %-9s %-6s %-6s %-6s %-6s\n&quot;, &quot;名字&quot;, &quot;  学号&quot;, &quot;语文&quot;, &quot;数学&quot;, &quot;英语&quot;, &quot;总分&quot;);
+                printf(&quot;\t\t\t-------------------------------------------------------------------\n&quot;);
+                printf(&quot;\t\t\t%-9s %-9d %-6.1f %-6.1f %-6.1f %-6.1f\n&quot;, stu[i].name, stu[i].number, stu[i].chinese, stu[i].math, stu[i].english, stu[i].average);
+                printf(&quot;\n\n\n&quot;);
+                printf(&quot;\t\t\t-------------------------按任意键返回上一界面----------------------\n&quot;);
+                getch();
+
+                flag1 = 1;
+                return ;
+            &#125;
+        &#125;
+
+        if (flag1 == 0)
+        &#123;
+            printf(&quot;\n\n&quot;);
+            printf(&quot;\t\t\t--------------------------查询不到当前学生信息--------------------------\n&quot;);
+
+            printf(&quot;\t\t\t------------------------------按任意键返回------------------------------&quot;);
+            getch();
+        &#125;
+    &#125;
+&#125;
+
+//管理员端按学号查询
+
+void sort()
+&#123;
+    struct isStudent MODLE;
+    int i, n, j;
+    n = nowStudentNumber;//此处需要传入用户个数
+
+    isStudent temp[MAX];
+    for (int h = 0; h &lt; n; h++)
+    &#123;
+        temp[h] = stu[h];
+    &#125;
+    for (i = 0; i &lt; n; i++)
+        for (j = 0; j &lt; n - i; j++)
+            if (temp[j].number &lt; temp[j + 1].number)
+            &#123;
+                MODLE = temp[j];
+                temp[j] = temp[j + 1];
+                temp[j + 1] = MODLE;
+            &#125;
+
+    system(&quot;cls&quot;);
+    printf(&quot;\n\n\n&quot;);
+    printf(&quot;\t\t\t%-9s %-9s %-6s %-6s %-6s %-6s\n&quot;, &quot;   名字&quot;, &quot;  学号&quot;, &quot;语文&quot;, &quot;数学&quot;, &quot;英语&quot;, &quot;总分&quot;);
+    printf(&quot;\t\t\t-------------------------------------------------------------------\n&quot;);
+    printf(&quot;\n&quot;);
+    for (i = 0; i &lt; nowStudentNumber; i++)
+    &#123;
+        printf(&quot;\t\t\t%-9s %-10d %-6.1f %-6.1f %-6.1f %-6.1f\n&quot;, temp[i].name, temp[i].number, temp[i].chinese, temp[i].math, temp[i].english, temp[i].average);
+    &#125;
+    printf(&quot;\n&quot;);
+    printf(&quot;\t\t\t--------------------------输入任意键继续--------------------------\n&quot;);
+
+    getch();
+
+
+&#125;
+
+//按成绩排序
+
+void sortGrade()
+&#123;   //readOut();
+    struct isStudent MODRE;
+    int i, n, j;
+    n = nowStudentNumber;//此处需要传入用户个数
+    isStudent temp[MAX];
+    for (int h = 0; h &lt; n; h++)
+    &#123;
+        temp[h] = stu[h];
+    &#125;
+    for (i = 0; i &lt; n; i++)
+        for (j = 0; j &lt; n - i; j++)
+            if (temp[j].average &lt; temp[j + 1].average)
+            &#123;
+                MODRE = temp[j];
+                temp[j] = temp[j + 1];
+                temp[j + 1] = MODRE;
+            &#125;
+
+    system(&quot;cls&quot;);
+    printf(&quot;\n\n\n&quot;);
+    printf(&quot;\t\t\t%-9s %-9s %-6s %-6s %-6s %-6s\n&quot;, &quot;   名字&quot;, &quot;  学号&quot;, &quot;语文&quot;, &quot;数学&quot;, &quot;英语&quot;, &quot;总分&quot;);
+    printf(&quot;\t\t\t-------------------------------------------------------------------\n&quot;);
+    printf(&quot;\n&quot;);
+    for (i = 0; i &lt; nowStudentNumber; i++)
+    &#123;
+        printf(&quot;\t\t\t%-9s %-10d %-6.1f %-6.1f %-6.1f %-6.1f\n&quot;, temp[i].name, temp[i].number, temp[i].chinese, temp[i].math, temp[i].english, temp[i].average);
+    &#125;
+    printf(&quot;\n&quot;);
+    printf(&quot;\t\t\t--------------------------输入任意键继续--------------------------\n&quot;);
+
+    getch();
+&#125;
+
+////学生端内容
+
+//学生界面
+
+void studentInterface(int studentnumber13)//这里形参代表找到的学生学号
+&#123;
+    while (1)
+    &#123;
+    system(&quot;cls&quot;);
+            printf(&quot;\n\n\n\n\n\n&quot;);
+    printf(&quot;\t\t\t\t   Welcome to the Student achievement management system\n&quot;);
+    printf(&quot;\t\t\t\t\t             ～ (((^^)(^^)))    \n&quot;);
+    printf(&quot;\t\t\t\t\t┌────────────────────────────────────┐\n&quot;);
+    printf(&quot;\t\t\t\t\t│                                    │\n&quot;);
+    printf(&quot;\t\t\t\t\t│                                    │\n&quot;);
+    printf(&quot;\t\t\t\t\t│  1.查询个人信息                    │\n&quot;);
+    printf(&quot;\t\t\t\t\t│                                    │\n&quot;);
+    printf(&quot;\t\t\t\t\t│                                    │\n&quot;);
+    printf(&quot;\t\t\t\t\t│                                    │\n&quot;);
+    printf(&quot;\t\t\t\t\t│  2.修改账号密码                    │\n&quot;);
+    printf(&quot;\t\t\t\t\t│                                    │\n&quot;);
+    printf(&quot;\t\t\t\t\t│                                    │\n&quot;);
+    printf(&quot;\t\t\t\t\t│                                    │\n&quot;);
+    printf(&quot;\t\t\t\t\t│  3.退出                            │\n&quot;);
+    printf(&quot;\t\t\t\t\t│                                    │\n&quot;);
+    printf(&quot;\t\t\t\t\t└────────────────────────────────────┘\n&quot;);
+    printf(&quot;\t\t\t\t\t请输入:&quot;);
+
+        int i;
+
+        scanf(&quot;%d&quot;, &amp;i);
+
+        if (i == 1)
+        &#123;
+            studentFindShow(studentnumber13);//searchPersonInformation_asNumber(student* p,len);
+        &#125;
+        if (i == 2)
+        &#123;
+            changeTheSecurityCode(studentnumber13);//修改账户密码
+        &#125;
+        if (i == 3)
+        &#123;
+            exit(0);//退出，返回上一界面（go doing）
+        &#125;
+        getchar();
+    &#125;
+
+&#125;
+
+//学生端密码登录
+
+void studentInPWD()
+&#123;
+//   for(int j=0;j&lt; nowStudentNumber;j++)
+//   &#123;
+//
+//       printf(&quot;%s %d %f %f %f %f %s&quot;,stu[j].name,stu[j].number,stu[j].chinese,stu[j].match,stu[j].english,stu[j].average,stu[j].stu[20]);
+//
+//   &#125;
+loop9:  system(&quot;cls&quot;);
+
+    printf(&quot;\n\n\n&quot;);
+    printf(&quot;\t\t\t请输入学号:&quot;);
+
+    int studentnumberin;
+
+    scanf(&quot;%d&quot;, &amp;studentnumberin);
+
+    int flag12=0;//记录学生的账号是哪一个
+    int flag = 0;//判断是否找到了学生账号
+    char passwordin[20];//输入的密码
+    readOut();
+
+    for (int i = 0; i &lt; nowStudentNumber; i++)
+    &#123;
+        if (stu[i].number == studentnumberin)
+        &#123;
+        loop5:    system(&quot;cls&quot;);
+
+            printf(&quot;\n\n\n&quot;);
+            printf(&quot;\t\t\t请输入密码:&quot;);
+
+            scanf(&quot;%s&quot;, passwordin);
+
+            flag12 = 1;
+            if (strcmp(passwordin, stu[i].password) == 0)
+            &#123;
+
+
+                flag = 1;
+
+                studentInterface(studentnumberin);//这里将找到的学生编号传到下一界面
+            &#125;
+        &#125;
+
+
+    &#125;
+            if(flag!=0)
+        &#123;
+            printf(&quot;\n\n\n\n\n\n&quot;);
+            printf(&quot;\t\t\t密码输入错误！！&quot;);
+            sleep(1);
+            goto loop5;
+        &#125;
+
+
+
+        if(flag12!=0)
+            &#123;
+            fflush(stdin);
+            printf(&quot;\n\n\n\n\n\n&quot;);
+            printf(&quot;\t\t\t账号输入错误！！&quot;);
+            sleep(2);
+            goto loop9;
+            &#125;
+
+
+//            getch();
+//
+//            system(&quot;cls&quot;);
+
+
+/*
+    if (flag == 0)
+    &#123;
+        printf(&quot;抱歉，查无此账号\n&quot;);
+        getchar();
+        getch();
+
+        return;
+    &#125;
+    */
+//    getchar();
+&#125;
+
+//学生端展示个人信息
+
+void studentFindShow(int studentnumber)
+&#123;
+    int flag, s;//此处变量用来接收查询的学号
+    char name[10];//此处用来接收查询的学生姓名
+    int flag1 = 0;//此处变量用来无法查询到学号时返回变量
+    int number;//此处接收用户个数
+
+
+        number = nowStudentNumber;    //此处需补
+        system(&quot;cls&quot;);
+        printf(&quot;\n\n\t\t\t%-9s %-9s %-6s %-6s %-6s %-6s\n&quot;, &quot;名字&quot;, &quot;学号&quot;, &quot;语文&quot;, &quot;数学&quot;, &quot;英语&quot;, &quot;总分&quot;);
+        printf(&quot;\t\t\t-------------------------------------------------------------------\n&quot;);
+        for (int i = 0; i &lt; number; i++)
+        &#123;
+            if (stu[i].number == studentnumber)
+            &#123;
+                printf(&quot;\n\t\t\t  %-9s %-9d %-6.1f %-6.1f %-6.1f %-6.1f\n&quot;, stu[i].name, stu[i].number, stu[i].chinese, stu[i].math, stu[i].english, stu[i].average);
+                printf(&quot;\n\n\n&quot;);
+                printf(&quot;\t\t\t--------------------------按任意键返回-----------------------------&quot;);
+                getch();
+                flag1 = 1;
+                break;
+            &#125;
+
+        &#125;
+
+&#125;
+
+//学生端修改密码
+
+void changeTheSecurityCode(int studentNumber13)
+&#123;
+    system(&quot;cls&quot;);
+    char tmp1[20];
+    int i;
+
+        for (i = 0; i &lt;= nowStudentNumber; i++)
+        &#123;
+            if (stu[i].number == studentNumber13)
+            &#123;
+                break;
+            &#125;
+        &#125;
+    printf(&quot;\n\n\n&quot;);
+    printf(&quot;\t\t\t--------------------------请输入新密码--------------------------\n&quot;);
+    printf(&quot;\t\t\t&quot;);
+    scanf(&quot;%s&quot;, &amp;tmp1);
+
+    strcpy(stu[i].password, tmp1);
+
+    system(&quot;cls&quot;);
+
+    writeIn();
+    printf(&quot;\n\n\n&quot;);
+    printf(&quot;\t\t\t--------------------------修改密码成功--------------------------\n&quot;);
+    printf(&quot;\t\t\t--------------------------按任意键返回--------------------------\n&quot;);
+    getch();
+    return 0;
+&#125;
+
+//删除学生信息
+void deleteAccount()
+&#123;
+    isStudent Temporary[MAX];//临时数组用来储存内容
+    int studentnumber=5;//要求的学生学号
+    int number;//学生人数
+    int flag = 0;//判断输入是否存在
+    int g = 0;//除被删学生外其他人计数
+
+loop5:  system(&quot;cls&quot;);
+    printf(&quot;\n\n\n&quot;);
+    printf(&quot;\t\t\t--------------------------请输入要删除的学生学号:----------------------\n&quot;);
+    printf(&quot;\t\t\t----------------------------按“0”返回主菜单-------------------------\n&quot;);
+    printf(&quot;\n\n\t\t\t&quot;);
+    scanf(&quot;%d&quot;, &amp;studentnumber);
+            getchar();
+    if(0==studentnumber)
+        return ;
+
+    number = nowStudentNumber;
+
+    for (int i = 0; i &lt; number; i++)
+    &#123;
+        if (stu[i].number == studentnumber)
+        &#123;
+            flag = 1;
+
+            stu[i].number = 0;//将该学生学号归零
+        &#125;
+    &#125;
+
+    if (flag == 0)
+    &#123;
+        printf(&quot;\n\n&quot;);
+        printf(&quot;\t\t\t-------------------不存在该学生学号，请重新输入----------------------\n&quot;);
+        Sleep(30);
+        goto loop5;
+    &#125;
+    else
+    &#123;
+
+        for (int j = 0; j &lt; number; j++)//j是stu内学生
+        &#123;
+            if (stu[j].number != 0)
+            &#123;
+                Temporary[g] = stu[j];//按顺序将内容传输
+
+                g++;//这样就是输入一个加一个计数了，判断失败g不加j加一
+            &#125;
+        &#125;
+
+        char ch;//写入文件
+
+        FILE* pFile;
+
+        pFile = fopen(&quot;STUDENT.txt&quot;, &quot;w&quot;);//状态，覆写
+
+        if (pFile == NULL)
+        &#123;
+
+            printf(&quot;\t\t\t写入文件失败。\n&quot;);
+            printf(&quot;\t\t\t文件保存错误。\n&quot;);
+            printf(&quot;\t\t\t输入任意键退出。\n&quot;);
+            getch();
+            return 0;//以不正常状态退出
+        &#125;
+        else
+        &#123;
+
+            //将所有内容写入文件
+            for (int i = 0; i &lt; g; i++)
+            &#123;
+                fprintf(pFile, &quot;%-9s %-9d %-6.1lf %-6.1lf %-6.1lf %-6.1lf %-22s\n&quot;, Temporary[i].name, Temporary[i].number, Temporary[i].chinese, Temporary[i].math, Temporary[i].english, Temporary[i].average, Temporary[i].password);
+            &#125;
+
+            fclose(pFile);
+            //getchar();
+            readOut();
+            printf(&quot;\t\t\t--------------------------删除成功！-------------------------------------&quot;);
+            getch();
+
+        &#125;
+
+    &#125;
+&#125;
+</code></pre>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">惜缘怀古</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://xiyuanhuaigu.gitee.io/2022/03/03/C%E8%AF%AD%E8%A8%80%E5%B0%8F%E9%A1%B9%E7%9B%AE%E2%80%94%E2%80%94%E5%AD%A6%E7%94%9F%E6%88%90%E7%BB%A9%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/">https://xiyuanhuaigu.gitee.io/2022/03/03/C%E8%AF%AD%E8%A8%80%E5%B0%8F%E9%A1%B9%E7%9B%AE%E2%80%94%E2%80%94%E5%AD%A6%E7%94%9F%E6%88%90%E7%BB%A9%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://xiyuanhuaigu.gitee.io" target="_blank">惜缘怀古的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/img/Cprogect.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2022/02/09/sqlilabs%E9%80%9A%E5%85%B3%E6%95%99%E7%A8%8B/"><img class="next-cover" src="/img/1.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">sqlilabs通关教程</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/2.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">惜缘怀古</div><div class="author-info__description">唯有那份炫目，未曾忘却</div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#stduent-h"><span class="toc-number">1.</span> <span class="toc-text">stduent.h</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#main-c"><span class="toc-number">2.</span> <span class="toc-text">main.c</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#stduent-c"><span class="toc-number">3.</span> <span class="toc-text">stduent.c</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/03/03/C%E8%AF%AD%E8%A8%80%E5%B0%8F%E9%A1%B9%E7%9B%AE%E2%80%94%E2%80%94%E5%AD%A6%E7%94%9F%E6%88%90%E7%BB%A9%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/" title="C语言小项目——学生成绩管理系统"><img src="/img/Cprogect.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="C语言小项目——学生成绩管理系统"/></a><div class="content"><a class="title" href="/2022/03/03/C%E8%AF%AD%E8%A8%80%E5%B0%8F%E9%A1%B9%E7%9B%AE%E2%80%94%E2%80%94%E5%AD%A6%E7%94%9F%E6%88%90%E7%BB%A9%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/" title="C语言小项目——学生成绩管理系统">C语言小项目——学生成绩管理系统</a><time datetime="2022-03-03T14:35:44.000Z" title="发表于 2022-03-03 22:35:44">2022-03-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/02/09/sqlilabs%E9%80%9A%E5%85%B3%E6%95%99%E7%A8%8B/" title="sqlilabs通关教程"><img src="/img/1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="sqlilabs通关教程"/></a><div class="content"><a class="title" href="/2022/02/09/sqlilabs%E9%80%9A%E5%85%B3%E6%95%99%E7%A8%8B/" title="sqlilabs通关教程">sqlilabs通关教程</a><time datetime="2022-02-09T12:06:27.000Z" title="发表于 2022-02-09 20:06:27">2022-02-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/01/08/BurpSuite/" title="BurpSuite 的安装"><img src="/img/top_img.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="BurpSuite 的安装"/></a><div class="content"><a class="title" href="/2022/01/08/BurpSuite/" title="BurpSuite 的安装">BurpSuite 的安装</a><time datetime="2022-01-08T11:37:34.000Z" title="发表于 2022-01-08 19:37:34">2022-01-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/11/29/MISC/" title="MISC"><img src="/img/top_img.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="MISC"/></a><div class="content"><a class="title" href="/2021/11/29/MISC/" title="MISC">MISC</a><time datetime="2021-11-29T08:30:40.000Z" title="发表于 2021-11-29 16:30:40">2021-11-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/10/07/CTF/" title="CTF"><img src="/img/top_img.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CTF"/></a><div class="content"><a class="title" href="/2021/10/07/CTF/" title="CTF">CTF</a><time datetime="2021-10-07T02:18:27.000Z" title="发表于 2021-10-07 10:18:27">2021-10-07</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By 惜缘怀古</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
