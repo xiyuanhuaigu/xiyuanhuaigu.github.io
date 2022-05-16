@@ -1,0 +1,291 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>sqlmap使用方法 | 惜缘怀古的博客</title><meta name="keywords" content="惜缘怀古，博客"><meta name="author" content="惜缘怀古"><meta name="copyright" content="惜缘怀古"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Options（选项）-h：帮助文档 --version：查看sqlmap版本信息 -v:显示详细信息    ·0：只显示python的错误和一些严重性的信息    ·1：显示基本信息（默认）    ·2：显示debug信息    ·3：显示注入过程的payload    ·4：显示http请求包    ·5：显示http响应头    ·6：显示http响应页面  Target（目标）-d：直接连">
+<meta property="og:type" content="article">
+<meta property="og:title" content="sqlmap使用方法">
+<meta property="og:url" content="https://xiyuanhuaigu.gitee.io/2022/05/16/sqlmap%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/index.html">
+<meta property="og:site_name" content="惜缘怀古的博客">
+<meta property="og:description" content="Options（选项）-h：帮助文档 --version：查看sqlmap版本信息 -v:显示详细信息    ·0：只显示python的错误和一些严重性的信息    ·1：显示基本信息（默认）    ·2：显示debug信息    ·3：显示注入过程的payload    ·4：显示http请求包    ·5：显示http响应头    ·6：显示http响应页面  Target（目标）-d：直接连">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://xiyuanhuaigu.gitee.io/img/sqlmap.jpg">
+<meta property="article:published_time" content="2022-05-16T02:24:18.000Z">
+<meta property="article:modified_time" content="2022-05-16T03:19:25.144Z">
+<meta property="article:author" content="惜缘怀古">
+<meta property="article:tag" content="惜缘怀古，博客">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://xiyuanhuaigu.gitee.io/img/sqlmap.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://xiyuanhuaigu.gitee.io/2022/05/16/sqlmap%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'sqlmap使用方法',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-05-16 11:19:25'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/2.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">20</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/sqlmap.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">惜缘怀古的博客</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">sqlmap使用方法</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-05-16T02:24:18.000Z" title="发表于 2022-05-16 10:24:18">2022-05-16</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-05-16T03:19:25.144Z" title="更新于 2022-05-16 11:19:25">2022-05-16</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="sqlmap使用方法"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Options（选项）"><a href="#Options（选项）" class="headerlink" title="Options（选项）"></a>Options（选项）</h1><pre><code>-h：帮助文档
+--version：查看sqlmap版本信息
+-v:显示详细信息
+   ·0：只显示python的错误和一些严重性的信息
+   ·1：显示基本信息（默认）
+   ·2：显示debug信息
+   ·3：显示注入过程的payload
+   ·4：显示http请求包
+   ·5：显示http响应头
+   ·6：显示http响应页面
+</code></pre>
+<h1 id="Target（目标）"><a href="#Target（目标）" class="headerlink" title="Target（目标）"></a>Target（目标）</h1><p>-d：直接连接数据库（格式：‘mysql://USER:PASSWORD@DBMS_IP:DBMS_PORT/DATABASE_NAME’）</p>
+<p>-u：指定url扫描,但url必须存在查询参数. 例: xxx.php?id=1</p>
+<p>l：后面跟一个log文件，判断log（日志）文件中所有记录是否存在注入点（用于多个url）</p>
+<p>m：后面跟一个txt文件，判断txt文件中所有记录是否存在注入点（用于多个url）</p>
+<p>-r:检查post请求是否存在注入（可以通过抓包工具抓取包，把请求保存在一个文档中，不限制文档后缀）。</p>
+<p>Request（请求）</p>
+<ul>
+<li><p>​      -‌-method：指定请求是提交的方法。如 –method=GET（ –method=POST）<br>注解：一般来说，Sqlmap能自动判断出是使用GET方法还是POST方法，但在某些情况下需要的可能是PUT等很少见的方法，此时就需要用参数“–method”来指定方法。如：“–method=PUT”。<br>​    </p>
+</li>
+<li><p>​      -‌-data: 该参数指定的数据会以POST方式进行提交，Sqlmap也会检测该参数指定数据是否存在注入漏洞。（格式: –data = “参数1 &amp; 参数2…”）<br>注解：get/post提交的都适用（地址栏或者表单）；可以只提交一个参数。</p>
+<p><code>python sqlmap -u “http://127.0.0.1/index.php” --data=”user=1&amp;pass=2”</code></p>
+</li>
+<li><p>-‌-param-del： 当用其他字符分割参数的时候，需要用到此参数（针对data）</p>
+<p><code>python sqlmap.py -u &quot;http://127.0.0.1:8080/user.php&quot; --data=&quot;id=0;name=ner&quot; --param-del=&quot;;&quot;</code></p>
+</li>
+<li><p>-‌-user-agent: sqlmap默认的user-agent是sqlmap/1.5.11.5#dev (<a target="_blank" rel="noopener" href="https://sqlmap.org)(这是我的),这样容易被目的主机所察觉,所以需要修改user-agent./">https://sqlmap.org)（这是我的），这样容易被目的主机所察觉，所以需要修改user-agent。</a></p>
+<p> <code> python sqlmap.py -u &quot;http://sql.test/Less-1/?id= 1&quot;   --data=&quot;user = 1&quot;--user-agent=&quot;Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0; de) Opera 8.0&quot;</code></p>
+</li>
+</ul>
+<p>​       注解：要检测user-agent的注入点，则需要level &gt;= 3。</p>
+<ul>
+<li><p>-‌-random-agent: user-agent可能不是特别容易记住，所以在安装目录\sqlmap-master\data\txt下有一个user-agents.txt文件，保存着大量的user-agent，而这个参数就是在这个文件中随机选择一个。</p>
+<p><code> python sqlmap.py -u &quot;http://sql.test/Less-1/?id= 1&quot;   --data=&quot;user = 1&quot;  --random-agent</code></p>
+</li>
+<li><p>-‌-proxy: 用于代理</p>
+<p><code> python sqlmap.py -u &quot;http://sql.test/Less-1/?id= 1&quot;   --proxy=&quot;http://127.0.0.1:8080&quot;</code></p>
+</li>
+<li><p>- -‌-proxy-cred:用于代理认证，个人感觉就是你让别人（代理商）做事情，别人想要收费，然后你缴费，别人给你一个账号和密码（用于认证），证明你可以让它为你做事情。（格式为：–proxy-cred=”name:password”） </p>
+<p><code>python sqlmap.py -u http://127.0.0.1/123.asp?id=1 -proxy=127.0.0.1:8080 --proxy-cred=admin:pass</code></p>
+</li>
+<li><p>-‌-timeout:设置请求超时的时间，单位是秒，默认是30。（格式：-‌-timeout=50）</p>
+</li>
+<li><p>-‌-retries: 设置超时从新连接的次数，默认是3次。（格式： –retries=5）</p>
+</li>
+</ul>
+<h1 id="Injection（注入）"><a href="#Injection（注入）" class="headerlink" title="Injection（注入）"></a>Injection（注入）</h1><ul>
+<li> -p:对指定的参数进行检测（是否存在注入），这个会使level失效（这里失效的意思应该是只对p指定的参数进行检测，其他都不在进行检测了）。</li>
+</ul>
+<p>​    <code>python sqlmap.py -u &quot;http://sql.test/Less-1/?id= 1&quot;    -p &quot;user-agent&quot;</code></p>
+<ul>
+<li>-‌-skip:不对指定的参数进行检测（是否存在注入）。</li>
+</ul>
+<p>​    <code> python sqlmap.py -u &quot;http://sql.test/Less-1/?id= 1&quot;   --level=3  -skip &quot;user-agent&quot;</code></p>
+<p>​      注解：当level &gt;= 3时，应该要检测user-agent参数，但使用了skip之后，sqlmap就不用再对 user- agent进行     检测了。（这里的level没有失效，除了指定的参数外，其他的还是要检测的）</p>
+<ul>
+<li><p>-‌-dbms: 指定数据库类型，无需sqlmap发出请求报文去确定数据库类型，减少请求次数和被察觉的概率。</p>
+<p> <code> python sqlmap.py -u &quot;http://sql.test/Less-1/?id= 1&quot;   --dbms=&quot;mysql&quot;</code></p>
+</li>
+<li><p>-‌-os: 指定系统的信息，无需sqlmap发出请求报文去确定系统信息，减少请求次数和被察觉的概率。</p>
+</li>
+</ul>
+<p>​    <code>python sqlmap.py -u &quot;http://sql.test/Less-1/?id= 1&quot;   --os=&quot;windows&quot;</code> </p>
+<h1 id="Detection（检测）"><a href="#Detection（检测）" class="headerlink" title="Detection（检测）"></a>Detection（检测）</h1><ul>
+<li>-‌-level: 设置测试的等级，一共有5级。<pre><code>      ·1：默认
+         ·2：检测cookie
+         ·3：检测user-agent
+         ·4：检测refere
+         ·5：检测host
+</code></pre>
+</li>
+</ul>
+<p>#本人使用后看不出任何区别，用于给出格式<br><code>python sqlmap.py -u &quot;http://sql.test/Less-1/?id=1&quot; --level 5</code></p>
+<ul>
+<li>-‌-risk: 设置风险等级，一共有4级。<pre><code>   ·1：默认（如果客户没有明确要求，使用等级1就好，因为等级越高，数据表被篡改的风险越大）
+   ·2：基于事件测试
+   ·3：基于or语句测试
+   ·4：会执行updata、delete等操作
+</code></pre>
+</li>
+</ul>
+<p>#本人使用后看不出任何区别，用于给出格式<br>python sqlmap.py -u “<a target="_blank" rel="noopener" href="http://sql.test/Less-1/?id=1&quot;">http://sql.test/Less-1/?id=1&quot;</a> –risk 3</p>
+<ul>
+<li>-‌-string: 基于布尔类型注入的时候，指定返回成功的信息，从而帮助sqlmap识别正确结果。（格式：-‌-string=‘内容’）</li>
+</ul>
+<p>#本人使用后看不出任何区别，用于给出格式<br><code>python sqlmap.py -u &quot;http://sql.test/Less-1/?id= 1&quot; --string=&quot;win&quot;</code></p>
+<ul>
+<li>-‌-not-string: 基于布尔类型注入的时候，指定返回失败的信息，从而帮助sqlmap识别不正确结果。（格式：-‌-not-string=‘内容’）</li>
+</ul>
+<p>​       #本人使用后看不出任何区别，用于给出格式<br>​      <code>python sqlmap.py -u &quot;http://sql.test/Less-1/?id= 1&quot; --not-string=&quot;bad&quot;</code></p>
+<ul>
+<li>-‌-code: 若是用户知道代表True的页面HTTP状态码为200而代表False的页面HTTP状态码不为200比如是401的 话，就可以用“–code”参数告诉告诉Sqlmap这一信息（-‌-code=200）。</li>
+</ul>
+<p>​      #本人使用后看不出任何区别，用于给出格式<br>​      <code>python sqlmap.py -u &quot;http://sql.test/Less-1/?id= 1&quot; --code=200</code></p>
+<ul>
+<li>-‌-current-user: 获取当前用户。</li>
+</ul>
+<p>​       <code>python sqlmap.py -u &quot;http://sql.test/Less-1/?id= 1&quot; --current-user</code></p>
+<ul>
+<li>-‌-current-db： 获取当前的数据库。</li>
+</ul>
+<p>​        <code>python sqlmap.py -u &quot;http://sql.test/Less-1/?id= 1&quot; --current-db</code></p>
+<ul>
+<li>-‌-users: 获取所有用户。</li>
+</ul>
+<p>​        <code>python sqlmap.py -u &quot;http://sql.test/Less-1/?id= 1&quot; --users</code></p>
+<ul>
+<li>–dbs: 查看目标服务器有什么数据库。</li>
+</ul>
+<p>​        <code>python sqlmap.py -u &quot;http://sql.test/Less-1/?id= 1&quot; --dbs</code></p>
+<ul>
+<li>-‌-tables: 目标主机中的数据库有什么数据表。</li>
+</ul>
+<p>​        #默认是当前数据库<br>​        <code>python sqlmap.py -u &quot;http://sql.test/Less-1/?id= 1&quot; --tables</code><br>​        #查询目标主机information_schema的表信息<br>​        <code>python sqlmap.py -u &quot;http://sql.test/Less-1/?id= 1&quot; -D &quot;information_schema&quot;  --tables</code></p>
+<ul>
+<li>-‌-columns: 获取目标主机中数据库的列数信息。</li>
+</ul>
+<p>​    #默认是当前数据库<br>​    <code>    python sqlmap.py -u &quot;http://sql.test/Less-1/?id= 1&quot; --columns</code><br>​    #查询目标主机information_schema的列数信息<br>​    <code>python sqlmap.py -u &quot;http://sql.test/Less-1/?id= 1&quot; -D &quot;information_schema&quot; --columns</code></p>
+<ul>
+<li>-‌-dump: 查询指定范围的所有数据（-D 指定数据库 -T 指定数据表 -C 指定字段）</li>
+</ul>
+<p>​    <code>python sqlmap.py -u &quot;http://sql.test/Less-1/?id= 1&quot;  --dump</code><br>​    <code>python sqlmap.py -u &quot;http://sql.test/Less-1/?id= 1&quot; -T &quot;users&quot; --dump</code><br>​    <code>python sqlmap.py -u &quot;http://sql.test/Less-1/?id= 1&quot;-D &quot;security&quot; -T &quot;users&quot; --dump</code><br>​    <code>python sqlmap.py -u &quot;http://sql.test/Less-1/?id= 1&quot; -D &quot;lys&quot;  --dump</code></p>
+<p>​    注解：默认是当前数据库的所有信息</p>
+<ul>
+<li>-‌-dump-all: 查询目的主机所有数据库的所有数据</li>
+</ul>
+<p>​    <code>python sqlmap.py -u &quot;http://sql.test/Less-1/?id= 1&quot; --dump-all</code></p>
+<ul>
+<li>-‌-search: 查询目的主机是否存在相当应的列、表和数据库（-D 指定数据库 -T 指定数据表 -C 指定字段）</li>
+</ul>
+<p>​    #默认让sqlmap提供数据库名，是可以依靠securit查到security<br>​    <code>python sqlmap.py -u &quot;http://sql.test/Less-1/?id= 1&quot; --search -D &quot;securit&quot;</code><br>​    #查出在两个数据库中的两个users表<br>​    <code>python sqlmap.py -u &quot;http://sql.test/Less-1/?id= 1&quot; --search -T &quot;users&quot;</code><br>​    <code>python sqlmap.py -u &quot;http://sql.test/Less-1/?id= 1&quot; --search -C &quot;id&quot;</code></p>
+<p>​    注解：search与dump不一样，如果不加-D -T -C的话，search是不会有效果的而dump会打印当前数据库的信    息。</p>
+<ul>
+<li>-‌-comments: 查询目的主机数据库的备注</li>
+</ul>
+<p>​    #本人使用后看不出任何区别，用于给出格式<br>​    #下面的应该是查询information_schema数据库<br>​    <code>python sqlmap.py -u &quot;http://sql.test/Less-1/?id= 1&quot;  -D &quot;information_schema&quot; --comments</code><br>​    #下面的应该是查询当前数据库<br>​    <code>python sqlmap.py -u &quot;http://sql.test/Less-1/?id= 1&quot;   --comments</code></p>
+<pre><code>-D: 指定数据库：与dump、search、comments等一起使用。
+
+-T: 指定数据表：与dump、search等一起使用。
+
+-C: 指定字段：与dump、search等一起使用。
+
+-‌-exclude-sysbds:排除系统数据库
+</code></pre>
+<p>​    #与dbs（查看目标服务器有什么数据库）连用无效果<br>​    <code>python sqlmap.py -u &quot;http://sql.test/Less-1/?id= 1&quot; --dump-all --exclude-sysdbs</code></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">惜缘怀古</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://xiyuanhuaigu.gitee.io/2022/05/16/sqlmap%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/">https://xiyuanhuaigu.gitee.io/2022/05/16/sqlmap%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://xiyuanhuaigu.gitee.io" target="_blank">惜缘怀古的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/img/sqlmap.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2022/05/13/CTFShow-web%E5%85%A5%E9%97%A8-PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/"><img class="next-cover" src="/img/ctfshowwbfxlh.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">CTFShow web入门 PHP反序列化</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/2.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">惜缘怀古</div><div class="author-info__description">唯有那份炫目，未曾忘却</div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">20</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Options%EF%BC%88%E9%80%89%E9%A1%B9%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">Options（选项）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Target%EF%BC%88%E7%9B%AE%E6%A0%87%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">Target（目标）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Injection%EF%BC%88%E6%B3%A8%E5%85%A5%EF%BC%89"><span class="toc-number">3.</span> <span class="toc-text">Injection（注入）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Detection%EF%BC%88%E6%A3%80%E6%B5%8B%EF%BC%89"><span class="toc-number">4.</span> <span class="toc-text">Detection（检测）</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/05/16/sqlmap%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/" title="sqlmap使用方法"><img src="/img/sqlmap.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="sqlmap使用方法"/></a><div class="content"><a class="title" href="/2022/05/16/sqlmap%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/" title="sqlmap使用方法">sqlmap使用方法</a><time datetime="2022-05-16T02:24:18.000Z" title="发表于 2022-05-16 10:24:18">2022-05-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/13/CTFShow-web%E5%85%A5%E9%97%A8-PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" title="CTFShow web入门 PHP反序列化"><img src="/img/ctfshowwbfxlh.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CTFShow web入门 PHP反序列化"/></a><div class="content"><a class="title" href="/2022/05/13/CTFShow-web%E5%85%A5%E9%97%A8-PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" title="CTFShow web入门 PHP反序列化">CTFShow web入门 PHP反序列化</a><time datetime="2022-05-13T11:13:19.000Z" title="发表于 2022-05-13 19:13:19">2022-05-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/13/nmap%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/" title="nmap基本用法"><img src="/img/nmap.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="nmap基本用法"/></a><div class="content"><a class="title" href="/2022/05/13/nmap%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/" title="nmap基本用法">nmap基本用法</a><time datetime="2022-05-13T02:19:30.000Z" title="发表于 2022-05-13 10:19:30">2022-05-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/08/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" title="PHP反序列化"><img src="/img/PHPfanxu.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="PHP反序列化"/></a><div class="content"><a class="title" href="/2022/05/08/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" title="PHP反序列化">PHP反序列化</a><time datetime="2022-05-08T08:18:03.000Z" title="发表于 2022-05-08 16:18:03">2022-05-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/05/Token/" title="Token"><img src="/img/token.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Token"/></a><div class="content"><a class="title" href="/2022/05/05/Token/" title="Token">Token</a><time datetime="2022-05-05T09:51:22.000Z" title="发表于 2022-05-05 17:51:22">2022-05-05</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By 惜缘怀古</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
