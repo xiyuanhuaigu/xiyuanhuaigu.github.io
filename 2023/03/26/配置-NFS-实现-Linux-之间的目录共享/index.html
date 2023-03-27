@@ -1,0 +1,220 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>配置 NFS 实现 Linux 之间的目录共享 | 惜缘怀古的博客</title><meta name="keywords" content="惜缘怀古，博客"><meta name="author" content="惜缘怀古"><meta name="copyright" content="惜缘怀古"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="网络文件系统（英语：Network File System，缩写作 NFS）是一种分布式文件系统，力求客户端主机可以访问服务器端文件，并且其过程与访问本地存储时一样，它由Sun Microsystems（已被甲骨文公司收购）开发，于1984年发布。NFS 的实现基于 ONC RPC（一个开放、标准的RFC系统，任何人或组织都可以依据标准实现它）。 本文仅介绍 NFS 最简单的用法：在两台不同的 L">
+<meta property="og:type" content="article">
+<meta property="og:title" content="配置 NFS 实现 Linux 之间的目录共享">
+<meta property="og:url" content="https://xiyuanhuaigu.gitee.io/2023/03/26/%E9%85%8D%E7%BD%AE-NFS-%E5%AE%9E%E7%8E%B0-Linux-%E4%B9%8B%E9%97%B4%E7%9A%84%E7%9B%AE%E5%BD%95%E5%85%B1%E4%BA%AB/index.html">
+<meta property="og:site_name" content="惜缘怀古的博客">
+<meta property="og:description" content="网络文件系统（英语：Network File System，缩写作 NFS）是一种分布式文件系统，力求客户端主机可以访问服务器端文件，并且其过程与访问本地存储时一样，它由Sun Microsystems（已被甲骨文公司收购）开发，于1984年发布。NFS 的实现基于 ONC RPC（一个开放、标准的RFC系统，任何人或组织都可以依据标准实现它）。 本文仅介绍 NFS 最简单的用法：在两台不同的 L">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://xyhutc.oss-cn-qingdao.aliyuncs.com/giteetuchuang/41c5c54fccccad55d07201f04c40fff6a421abbf_raw.jpg">
+<meta property="article:published_time" content="2023-03-26T08:19:52.000Z">
+<meta property="article:modified_time" content="2023-03-26T08:31:32.053Z">
+<meta property="article:author" content="惜缘怀古">
+<meta property="article:tag" content="惜缘怀古，博客">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://xyhutc.oss-cn-qingdao.aliyuncs.com/giteetuchuang/41c5c54fccccad55d07201f04c40fff6a421abbf_raw.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://xiyuanhuaigu.gitee.io/2023/03/26/%E9%85%8D%E7%BD%AE-NFS-%E5%AE%9E%E7%8E%B0-Linux-%E4%B9%8B%E9%97%B4%E7%9A%84%E7%9B%AE%E5%BD%95%E5%85%B1%E4%BA%AB/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '配置 NFS 实现 Linux 之间的目录共享',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-03-26 16:31:32'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/2.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">52</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://xyhutc.oss-cn-qingdao.aliyuncs.com/giteetuchuang/41c5c54fccccad55d07201f04c40fff6a421abbf_raw.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">惜缘怀古的博客</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">配置 NFS 实现 Linux 之间的目录共享</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-03-26T08:19:52.000Z" title="发表于 2023-03-26 16:19:52">2023-03-26</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-03-26T08:31:32.053Z" title="更新于 2023-03-26 16:31:32">2023-03-26</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>8分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="配置 NFS 实现 Linux 之间的目录共享"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p><strong>网络文件系统</strong>（英语：<strong>Network File System</strong>，缩写作 <strong>NFS</strong>）是一种<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Distributed_data_store">分布式文件系统</a>，力求客户端主机可以访问服务器端文件，并且其过程与访问本地存储时一样，它由<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Sun_Microsystems">Sun Microsystems</a>（已被甲骨文公司收购）开发，于1984年发布。NFS 的实现基于 ONC RPC（一个开放、标准的<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Request_for_Comments">RFC</a>系统，任何人或组织都可以依据标准实现它）。</p>
+<p><strong>本文仅介绍 NFS 最简单的用法：在两台不同的 Linux 机器上共享目录。</strong></p>
+<hr>
+<p>A 和 B 的连接是内网或公网均可。但公网比较麻烦，要解决防火墙的问题。而且由于 NFS  是明文，所以一般不建议在公网使用。本文的示例用的公网主要是因为我在搞这个的时候手里暂时只有两个不在同一网段的机器，又懒得搞 docker  啥的=。=，不过你直接在内网照做也没什么区别。</p>
+<p>我们将 A 称为 <strong>NFS 服务器</strong>，将 B 称为 <strong>NFS 客户端</strong>。下面也都将以 NFS 服务器和 NFS 客户端称呼，不再提及 A 和 B。</p>
+<h2 id="1-通用操作：安装必要的程序"><a href="#1-通用操作：安装必要的程序" class="headerlink" title="1. 通用操作：安装必要的程序"></a>1. 通用操作：安装必要的程序</h2><p>在 CentOS 中 NFS 的主程序软件包名为 <code>nfs-utils</code>。前文说过，NFS 的实现是基于 RPC 的，所以当我们安装 <code>nfs-utils</code> 时，相关依赖 <code>rpcbind</code> 包也会被自动检索到并安装。我们只需要安装一个 <code>nfs-utils</code> 即可，其依赖 yum 包管理器会解决：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install nfs-utils</span><br></pre></td></tr></table></figure>
+
+<p>NFS 服务器和 NFS 客户端都需要安装。</p>
+<h2 id="2-NFS-服务端操作"><a href="#2-NFS-服务端操作" class="headerlink" title="2. NFS 服务端操作"></a>2. NFS 服务端操作</h2><h3 id="2-1-编辑-NFS-服务器配置文件"><a href="#2-1-编辑-NFS-服务器配置文件" class="headerlink" title="2.1. 编辑 NFS 服务器配置文件"></a>2.1. 编辑 NFS 服务器配置文件</h3><p>NFS 服务器的配置文件在 <code>/etc/exports</code>：</p>
+<p>我们打开（如果是空的直接编辑就好，如果不存在就创建新的）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/exports</span><br></pre></td></tr></table></figure>
+
+<p>其<strong>配置非常非常非常简单！</strong>每个要共享的目录占一行，每行格式如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;export&gt; &lt;host1&gt;(&lt;options&gt;) &lt;hostN&gt;(&lt;options&gt;)...</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><code>export</code>：要共享的目录。注意必须是目录，NFS 共享的最小单位就是目录。</p>
+</li>
+<li><pre><code>host
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  ：要共享的目标主机，即可访问此共享目录的 NFS 客户端。这是 NFS 服务器唯一验证访问者身份的方式。</span><br><span class="line"></span><br><span class="line">  - 可以使用完整的 IP 或者是网域，例如 `192.168.100.10` 或 `192.168.100.0/24` 或 `192.168.100.0/255.255.255.0` 都可以！</span><br><span class="line">  - 也可以使用主机名，但这个主机名必须要在 `/etc/hosts` 内，或可使用 DNS 找到该名称才行！反正重点是可找到 IP 就是了。如果是主机名的话，那么他可以支持通配符，例如 `*` 或 `?` 均可。</span><br><span class="line">  - 也可以直接为 `*` 表示允许所有人访问。</span><br><span class="line">  - 注：NFS 同时支持公网和内网共享，但由于 NFS 是明文的，通常不建议公网共享，而且局域网内使用。</span><br><span class="line"></span><br><span class="line">- `options`：给 `host` 共享 `export` 目录的选项，多个选项用逗号 `,`隔开。每组 `options` 只服务一个 `host`。</span><br><span class="line"></span><br><span class="line">这里给出几个 `options` 的常用选项（更多详见 [man exports](https://man7.org/linux/man-pages/man5/exports.5.html)）：</span><br><span class="line"></span><br><span class="line">| 参数值                         | 含义                                                         |</span><br><span class="line">| ------------------------------ | ------------------------------------------------------------ |</span><br><span class="line">| `rw` `ro`                      | 设置目录分享权限。`rw` 表示可读写（read-write），`ro` 表示只读（read-only）。 最终的客户端对目录的访问权限为此选项与服务器系统用户实际拥有权限的交集。 比如这里设置 `rw` 权限，但是服务器中自己也没有写权限，那么客户端也就只能是只读权限。 **另外要注意的是，通常访问者被服务器看做其他用户，即权限设置的最后三位。例如，服务器共享的目录权限为 `drwxrwxr-x`，那么访问者的最大权限就是后三位的 `r-x`。** |</span><br><span class="line">| `sync` `async`                 | `sync` 代表数据会同步写入到内存与硬盘中，`async` 则代表数据会先暂存于内存当中，而非直接写入硬盘。 |</span><br><span class="line">| `no_root_squash` `root_squash` | 当 NFS 客户端访问此共享目录时，如果使用的是 root 身份，是否在服务器端保留同等的 root 身份（例如 NFS 客户端使用 root 用户在共享目录中添加了一个文件后，服务器端或其他客户端看到的此文件修改者仍是 root）。`no_root_squash` 为保留，默认是 `root_squash` 为不保留。 |</span><br><span class="line">| `all_sqush`                    | 映射所有访问者的 UIDs 和 GIDs 为匿名用户。                   |</span><br><span class="line">| `anonuid` `anongid`            | 显式设定匿名访问者 UID 和 GID。设定后，所有匿名访问此共享目录的请求看起来都是同一个用户（相同的 UID 或 GID）。 与 `all_sqush` 搭配使用可以让所有访问用户都使用同一个指定的账户身份访问（先将所有访问者都映射为匿名的，再给匿名用户指定 UID 和 GID）。 |</span><br><span class="line"></span><br><span class="line">本例添加一条如下：</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+/nfs-shared *
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">即共享服务器目录 `/nfs-shared` 给 `所有人`，赋予读写权限。</span><br><span class="line"></span><br><span class="line">配置完 `/etc/exports` 后，如果你的 nfs 服务**正在运行**，则需要使用命令 `exportfs -arv ` 使其生效。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+exportfs [-aruv]
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- `-a`：全部挂载(或卸除) `/etc/exports` 内的设定。</span><br><span class="line">- `-r`：重新挂载 `/etc/exports` 里面的设定，此外，亦同步更新 `/etc/exports` 及 `/var/lib/nfs/xtab` 的内容。</span><br><span class="line">- `-u`：卸除某一目录。</span><br><span class="line">- `-v`：在 `export` 的时候，将共享的目录显示到屏幕上！</span><br><span class="line"></span><br><span class="line">### 2.2. 启动 NFS 服务</span><br><span class="line"></span><br><span class="line">前面说过，NFS 服务依赖于 RPC，所以我们启动 NFS 服务前，需要先启动 RPC 服务：</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+systemctl start rpcbind
+systemctl start nfs-server
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">启动后，我们可以检查一下 RPC 和 NFS 服务开启了哪些端口：</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+$ netstat -tulnp | grep -E &#39;(rpc|nfs|1/systemd)&#39;
+tcp        0      0 0.0.0.0:111             0.0.0.0:*               LISTEN      1/systemd           
+tcp        0      0 0.0.0.0:20048           0.0.0.0:*               LISTEN      2049808/rpc.mountd  
+tcp        0      0 0.0.0.0:56525           0.0.0.0:*               LISTEN      2049794/rpc.statd   
+tcp6       0      0 :::111                  :::*                    LISTEN      1/systemd           
+tcp6       0      0 :::20048                :::*                    LISTEN      2049808/rpc.mountd  
+tcp6       0      0 :::40445                :::*                    LISTEN      2049794/rpc.statd   
+udp        0      0 0.0.0.0:20048           0.0.0.0:*                           2049808/rpc.mountd  
+udp        0      0 0.0.0.0:111             0.0.0.0:*                           1/systemd           
+udp        0      0 127.0.0.1:778           0.0.0.0:*                           2049794/rpc.statd   
+udp        0      0 0.0.0.0:50449           0.0.0.0:*                           2049794/rpc.statd   
+udp6       0      0 :::20048                :::*                                2049808/rpc.mountd  
+udp6       0      0 :::36774                :::*                                2049794/rpc.statd   
+udp6       0      0 :::111                  :::*                                1/systemd
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">这里可以看到，`nfs-server` 本身没有占用端口，因为它是通过 `rpcbind` 来操作的，所以只能看到 `rpcbind` 的端口占用。</span><br><span class="line"></span><br><span class="line">然后，我们也有必要验证一下，我们的目录是否已经共享出来了，使用 `showmount` 命令：</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+showmount [-ae] [hostname|IP]
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- `-a` ：显示目前主机与客户端的 NFS 联机分享的状态；</span><br><span class="line">- `-e` ：显示某部主机的 `/etc/exports` 所分享的目录数据。</span><br><span class="line">- `[hostname|IP]`：要显示的主机名或 IP。不写的话就是本机。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+$ showmount -e
+Export list for iZ8vbf7xcuoq7ug1e7hjk5Z:
+/nfs-shared 47.93.49.1
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">显示出我们在 `/etc/exports` 中配置的内容，就是成功了。</span><br><span class="line"></span><br><span class="line">### 2.3. 打开 NFS 使用的端口</span><br><span class="line"></span><br><span class="line">如果你要在**公网**使用 NFS，有一点也非常重要，我们必须确保 `nfs-server` 在 `rpcbind` 中注册的端口是可以访问的状态！</span><br><span class="line"></span><br><span class="line">我们查看 rpc 相关的端口：</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+$ rpcinfo -p localhost | grep nfs
+  100003    3   tcp   2049  nfs
+  100003    4   tcp   2049  nfs
+  100227    3   tcp   2049  nfs_acl
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">可以看到我这里用的是 2049 端口，我们必须打开服务器的这个端口（例如阿里云中的安全组设置），否则客户端依然是无法访问/挂载的。</span><br><span class="line"></span><br><span class="line">## 3. NFS 客户端操作</span><br><span class="line"></span><br><span class="line">### 3.1. 启动 NFS 服务</span><br><span class="line"></span><br><span class="line">客户端同样需要启动 `rpcbind` 和 `nfs-server`。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+systemctl start rpcbind
+systemctl start nfs-server
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">不过客户端这边没必要特别关注什么其他的东西，就不像 NFS 服务器那样多说了。</span><br><span class="line"></span><br><span class="line">### 3.2. 挂载共享目录</span><br><span class="line"></span><br><span class="line">挂载之前，我们同样可以使用 `showmount -e` 命令，查看服务器共享了哪些目录，例如：</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+$ showmount -e 8.142.120.167
+Exports list on 8.142.120.167:
+/nfs-shared
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+如果你是在公网共享的话，showmount -e 这里可能会面临防火墙问题，你需要打开服务器端相应的端口（不是挂载的端口，是个 UDP 端口）。这里暂时不是重点，先不说了，因为不影响挂载。
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">挂载目录使用 `mount` 命令。`mount` 的功能挺多的，具体见 [man mount](https://man7.org/linux/man-pages/man8/mount.8.html)。</span><br><span class="line"></span><br><span class="line">这里就仅展示最基础的一个用法：</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+mount [options] &lt;source&gt; &lt;directory&gt;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">我们暂不考虑 `options`，就非常简单了，就是 `mount` 后面接源目录地址和目的目录地址。</span><br><span class="line"></span><br><span class="line">我这里的 NFS 服务器的地址为 `8.142.120.167`，故我这里源目录地址应当填 `8.142.120.167:/nfs-shared`。</span><br><span class="line"></span><br><span class="line">目的目录地址应当是 NFS 客户端本地的一个**空**目录，这里现创建一个：</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+mkdir /nfs-shared-from-server
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">现在我们本例中 NFS 客户端中最后的挂载命令即：</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+mount 8.142.120.167:/nfs-shared /nfs-shared-from-server
+</code></pre>
+</li>
+</ul>
+<p>如果没有错误信息的话，就是挂载成功了。</p>
+<p>现在我们 NFS 客户端访问自己的目录 <code>/nfs-shared-from-server</code>，就是在访问服务器端的共享目录 <code>/nfs-shared</code> 了。</p>
+<p>搞定！</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">惜缘怀古</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://xiyuanhuaigu.gitee.io/2023/03/26/%E9%85%8D%E7%BD%AE-NFS-%E5%AE%9E%E7%8E%B0-Linux-%E4%B9%8B%E9%97%B4%E7%9A%84%E7%9B%AE%E5%BD%95%E5%85%B1%E4%BA%AB/">https://xiyuanhuaigu.gitee.io/2023/03/26/%E9%85%8D%E7%BD%AE-NFS-%E5%AE%9E%E7%8E%B0-Linux-%E4%B9%8B%E9%97%B4%E7%9A%84%E7%9B%AE%E5%BD%95%E5%85%B1%E4%BA%AB/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://xiyuanhuaigu.gitee.io" target="_blank">惜缘怀古的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://xyhutc.oss-cn-qingdao.aliyuncs.com/giteetuchuang/41c5c54fccccad55d07201f04c40fff6a421abbf_raw.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2023/03/06/k8s%E5%85%AC%E7%BD%91%E9%83%A8%E7%BD%B2/"><img class="next-cover" src="https://xyhutc.oss-cn-qingdao.aliyuncs.com/giteetuchuang/9604cc9e45e234d534bda903e231df3e5be0b6c8_raw.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">k8s公网部署</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/2.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">惜缘怀古</div><div class="author-info__description">唯有那份炫目，未曾忘却</div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">52</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E9%80%9A%E7%94%A8%E6%93%8D%E4%BD%9C%EF%BC%9A%E5%AE%89%E8%A3%85%E5%BF%85%E8%A6%81%E7%9A%84%E7%A8%8B%E5%BA%8F"><span class="toc-number">1.</span> <span class="toc-text">1. 通用操作：安装必要的程序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-NFS-%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%93%8D%E4%BD%9C"><span class="toc-number">2.</span> <span class="toc-text">2. NFS 服务端操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E7%BC%96%E8%BE%91-NFS-%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">2.1.</span> <span class="toc-text">2.1. 编辑 NFS 服务器配置文件</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/03/26/%E9%85%8D%E7%BD%AE-NFS-%E5%AE%9E%E7%8E%B0-Linux-%E4%B9%8B%E9%97%B4%E7%9A%84%E7%9B%AE%E5%BD%95%E5%85%B1%E4%BA%AB/" title="配置 NFS 实现 Linux 之间的目录共享"><img src="https://xyhutc.oss-cn-qingdao.aliyuncs.com/giteetuchuang/41c5c54fccccad55d07201f04c40fff6a421abbf_raw.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="配置 NFS 实现 Linux 之间的目录共享"/></a><div class="content"><a class="title" href="/2023/03/26/%E9%85%8D%E7%BD%AE-NFS-%E5%AE%9E%E7%8E%B0-Linux-%E4%B9%8B%E9%97%B4%E7%9A%84%E7%9B%AE%E5%BD%95%E5%85%B1%E4%BA%AB/" title="配置 NFS 实现 Linux 之间的目录共享">配置 NFS 实现 Linux 之间的目录共享</a><time datetime="2023-03-26T08:19:52.000Z" title="发表于 2023-03-26 16:19:52">2023-03-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/06/k8s%E5%85%AC%E7%BD%91%E9%83%A8%E7%BD%B2/" title="k8s公网部署"><img src="https://xyhutc.oss-cn-qingdao.aliyuncs.com/giteetuchuang/9604cc9e45e234d534bda903e231df3e5be0b6c8_raw.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="k8s公网部署"/></a><div class="content"><a class="title" href="/2023/03/06/k8s%E5%85%AC%E7%BD%91%E9%83%A8%E7%BD%B2/" title="k8s公网部署">k8s公网部署</a><time datetime="2023-03-06T08:49:16.000Z" title="发表于 2023-03-06 16:49:16">2023-03-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/01/13/%E4%BD%BF%E7%94%A8kubeadm%E5%BF%AB%E9%80%9F%E9%83%A8%E7%BD%B2%E4%B8%80%E4%B8%AAk8s%E9%9B%86%E7%BE%A4/" title="使用kubeadm快速部署一个k8s集群"><img src="https://xyhutc.oss-cn-qingdao.aliyuncs.com/giteetuchuang/67a9fe345eeaa896812eb93135af4396761d850b_raw.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="使用kubeadm快速部署一个k8s集群"/></a><div class="content"><a class="title" href="/2023/01/13/%E4%BD%BF%E7%94%A8kubeadm%E5%BF%AB%E9%80%9F%E9%83%A8%E7%BD%B2%E4%B8%80%E4%B8%AAk8s%E9%9B%86%E7%BE%A4/" title="使用kubeadm快速部署一个k8s集群">使用kubeadm快速部署一个k8s集群</a><time datetime="2023-01-13T09:59:36.000Z" title="发表于 2023-01-13 17:59:36">2023-01-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/01/13/linux%E5%BC%80%E5%90%AFssh/" title="linux开启ssh"><img src="https://xyhutc.oss-cn-qingdao.aliyuncs.com/giteetuchuang/1660359611276.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="linux开启ssh"/></a><div class="content"><a class="title" href="/2023/01/13/linux%E5%BC%80%E5%90%AFssh/" title="linux开启ssh">linux开启ssh</a><time datetime="2023-01-13T08:46:03.000Z" title="发表于 2023-01-13 16:46:03">2023-01-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/11/18/%E5%85%B3%E9%97%AD%E5%BC%80%E5%90%AF%E4%B9%8B%E5%90%8Elinuxx%E5%AD%90%E7%B3%BB%E7%BB%9F%E5%BC%82%E5%B8%B8/" title="关闭开启之后linuxx子系统异常"><img src="/img/top_img.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="关闭开启之后linuxx子系统异常"/></a><div class="content"><a class="title" href="/2022/11/18/%E5%85%B3%E9%97%AD%E5%BC%80%E5%90%AF%E4%B9%8B%E5%90%8Elinuxx%E5%AD%90%E7%B3%BB%E7%BB%9F%E5%BC%82%E5%B8%B8/" title="关闭开启之后linuxx子系统异常">关闭开启之后linuxx子系统异常</a><time datetime="2022-11-18T06:53:40.000Z" title="发表于 2022-11-18 14:53:40">2022-11-18</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By 惜缘怀古</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
