@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>安卓常用目录</title>
+      <link href="/2023/09/22/%E5%AE%89%E5%8D%93%E5%B8%B8%E7%94%A8%E7%9B%AE%E5%BD%95/"/>
+      <url>/2023/09/22/%E5%AE%89%E5%8D%93%E5%B8%B8%E7%94%A8%E7%9B%AE%E5%BD%95/</url>
+      
+        <content type="html"><![CDATA[<h1 id="安卓常用目录"><a href="#安卓常用目录" class="headerlink" title="安卓常用目录"></a>安卓常用目录</h1><h2 id="data-data"><a href="#data-data" class="headerlink" title="data/data"></a>data/data</h2><p>存放用户APK数据的目录，每个APK都有自己的目录，以包命名，就是在data/data/目录下，会产生一个跟Package一样的目录这是一个私有的目录，app只能访问各自的目录，除非root权限。</p><h2 id="data-app"><a href="#data-app" class="headerlink" title="data/app"></a>data/app</h2><p>用户安装的app在该目录下，导出app文件可以使用命令</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb pull /data/app/包名-1/base.apk // 导出 APK 文件 其中，包名-1 是应用程序的版本号。</span><br></pre></td></tr></table></figure><h2 id="data-local-tmp"><a href="#data-local-tmp" class="headerlink" title="data/local/tmp"></a>data/local/tmp</h2><p>临时目录权限比较大</p><h2 id="system-app"><a href="#system-app" class="headerlink" title="system/app"></a>system/app</h2><p>存放系统自带的app </p><h2 id="system-lib，system-lib64"><a href="#system-lib，system-lib64" class="headerlink" title="system/lib，system/lib64"></a>system/lib，system/lib64</h2><p>存放系统so文件</p><h2 id="system-bin"><a href="#system-bin" class="headerlink" title="system/bin"></a>system/bin</h2><p>存放shell命令</p><h2 id="system-framework"><a href="#system-framework" class="headerlink" title="system/framework"></a>system/framework</h2><p>Android系统所用到的框架，如一些jar文件</p><h2 id="sd卡目录，不管手机有没有储存卡都会有这个目录，app操作sd卡需要申请权限"><a href="#sd卡目录，不管手机有没有储存卡都会有这个目录，app操作sd卡需要申请权限" class="headerlink" title="sd卡目录，不管手机有没有储存卡都会有这个目录，app操作sd卡需要申请权限"></a>sd卡目录，不管手机有没有储存卡都会有这个目录，app操作sd卡需要申请权限</h2><h2 id="Android几个目录的权限测试"><a href="#Android几个目录的权限测试" class="headerlink" title="Android几个目录的权限测试"></a>Android几个目录的权限测试</h2><h3 id="data-data-pkgName"><a href="#data-data-pkgName" class="headerlink" title="/data/data/pkgName"></a>/data/data/pkgName</h3><p>app的私有目录，该路径下的文件，通常需要拷贝到sdcard目录，再pull出来</p><h3 id="data-local-tmp-1"><a href="#data-local-tmp-1" class="headerlink" title="/data/local/tmp"></a>/data/local/tmp</h3><p>一个权限比较大的临时目录，一般逆向人员喜欢放在这</p><h3 id="sdcard"><a href="#sdcard" class="headerlink" title="/sdcard"></a>/sdcard</h3><p>6.0以下需要清单文件里申请访问权限</p><p>6.0以上还需要代码里动态申请权限</p><p>10.0以后还需要清单文件里做额外设置</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>010Editor破解</title>
       <link href="/2023/09/22/010Editor%E7%A0%B4%E8%A7%A3/"/>
       <url>/2023/09/22/010Editor%E7%A0%B4%E8%A7%A3/</url>
