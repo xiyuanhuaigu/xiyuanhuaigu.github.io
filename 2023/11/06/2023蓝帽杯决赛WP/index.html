@@ -1,0 +1,441 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>2023蓝帽杯决赛WP | 惜缘怀古的博客</title><meta name="keywords" content="惜缘怀古，博客"><meta name="author" content="惜缘怀古"><meta name="copyright" content="惜缘怀古"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="攻击路线图 外网区任务一：引流APK渗透步骤1：二维码分析 下载引流APK  解析二维码，发现flag和apk下载地址  步骤2：apk分析 下载apk并进行分析，使用 jadx 工具中全局搜索 flag{ 关键字  从搜索结果中，找到flag，双击即可复制，里面有两个flag，但是只有一个flag是正确的。  步骤3：通过apk发现目标其他网站 因为apk下载地址是： http:&#x2F;&#x2F;172.16">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2023蓝帽杯决赛WP">
+<meta property="og:url" content="https://xiyuanhuaigu.gitee.io/2023/11/06/2023%E8%93%9D%E5%B8%BD%E6%9D%AF%E5%86%B3%E8%B5%9BWP/index.html">
+<meta property="og:site_name" content="惜缘怀古的博客">
+<meta property="og:description" content="攻击路线图 外网区任务一：引流APK渗透步骤1：二维码分析 下载引流APK  解析二维码，发现flag和apk下载地址  步骤2：apk分析 下载apk并进行分析，使用 jadx 工具中全局搜索 flag{ 关键字  从搜索结果中，找到flag，双击即可复制，里面有两个flag，但是只有一个flag是正确的。  步骤3：通过apk发现目标其他网站 因为apk下载地址是： http:&#x2F;&#x2F;172.16">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://xyhutc.oss-cn-qingdao.aliyuncs.com/giteetuchuang/20231106163334.png">
+<meta property="article:published_time" content="2023-11-06T08:31:51.000Z">
+<meta property="article:modified_time" content="2024-01-18T02:15:28.428Z">
+<meta property="article:author" content="惜缘怀古">
+<meta property="article:tag" content="惜缘怀古，博客">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://xyhutc.oss-cn-qingdao.aliyuncs.com/giteetuchuang/20231106163334.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://xiyuanhuaigu.gitee.io/2023/11/06/2023%E8%93%9D%E5%B8%BD%E6%9D%AF%E5%86%B3%E8%B5%9BWP/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '2023蓝帽杯决赛WP',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-01-18 10:15:28'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/2.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">66</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://xyhutc.oss-cn-qingdao.aliyuncs.com/giteetuchuang/20231106163334.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">惜缘怀古的博客</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">2023蓝帽杯决赛WP</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-11-06T08:31:51.000Z" title="发表于 2023-11-06 16:31:51">2023-11-06</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-01-18T02:15:28.428Z" title="更新于 2024-01-18 10:15:28">2024-01-18</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>7分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="2023蓝帽杯决赛WP"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="攻击路线图"><a href="#攻击路线图" class="headerlink" title="攻击路线图"></a>攻击路线图</h1><p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRrcOxdc4HZ4n83qEv0XGU63cPeCOPG5bHSaKlvndQLibVBgoPYsNuW3g/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<h1 id="外网区"><a href="#外网区" class="headerlink" title="外网区"></a>外网区</h1><h2 id="任务一：引流APK渗透"><a href="#任务一：引流APK渗透" class="headerlink" title="任务一：引流APK渗透"></a>任务一：引流APK渗透</h2><p><strong>步骤1：二维码分析</strong></p>
+<p>下载引流APK</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRudCZ5aeRVD9b42786cmSVr9iaEvaicAmiarfPnicenIVGEnMr7LfvNCBSA/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>解析二维码，发现flag和apk下载地址</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRSf2uYMAogX1pnsr232vL7ZFeAS1rffYkuuia79LmXEoSxGFUg0oeHbQ/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><strong>步骤2：apk分析</strong></p>
+<p>下载apk并进行分析，使用 jadx 工具中全局搜索 flag{ 关键字</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRKnyHzfqgicEoQbNm4JOOmmm7RemLicVwJn8TXMN0TmD69CmMQeZe4bYQ/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>从搜索结果中，找到flag，双击即可复制，里面有两个flag，但是只有一个flag是正确的。</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRNxibmslECibestWRCyjf5Sda314TPqoV2dV9PMuaODHBJTXIqvK9f3fg/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><strong>步骤3：通过apk发现目标其他网站</strong></p>
+<p>因为apk下载地址是：</p>
+<p><a target="_blank" rel="noopener" href="http://172.16.20.200/%E6%B8%B8%E6%88%8F.apk">http://172.16.20.200/%E6%B8%B8%E6%88%8F.apk</a></p>
+<p>因此全局搜172.16.搜其他目标其他地址</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRc3cmibMnuOIFS6ZbD6VgICAALsW0Ia83XJmMVSEp7DZcutpRfQlc2ibA/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><strong>02</strong></p>
+<h2 id="任务二：博彩网站主站渗透"><a href="#任务二：博彩网站主站渗透" class="headerlink" title="任务二：博彩网站主站渗透"></a>任务二：博彩网站主站渗透</h2><p>访问从apk中发现的网站<a target="_blank" rel="noopener" href="http://172.16.10.102,发现是博彩网站主站/">http://172.16.10.102，发现是博彩网站主站</a></p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRN45PYSXpvqvahIsMH7e3lo2YQpuoluibmLxPuWHkq7SwBsxCKcT5Llg/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><strong>步骤4：文件上传获取目标服务器权限</strong></p>
+<p>访问系统之后，点击右上角的注册，根据要求填写信息，注册一个普通用户</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRzYwiaiaTk4tZzqC1OOOibcaKicGNw0cgvyMia2fSpAWm2WSFq6Cknst4Rbw/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>注册成功之后在上面填入用户名和密码，登录系统</p>
+<p>点击会员中心</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRlrBLRl5hZCzGdv6YrPZuO5wkbPcRCr0s05o7ORUToBzVdqpBib3ic6zA/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>在基本资料处有一个文件上传</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRLN2eEHGsuLTLO5n3LnmFUqA7QShjpVNfMqXyjicvVyj5hd6WMvmicfWw/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>在【会员中心】-【基本资料】处，点击【选择文件】，随意选择任意一张图片，尝试修改修改后缀为ini，发现可以成功上传</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRdB26DO62Re2MAK28luZAoUBPZwNqHwayaHOvWAibhhqoQYvE9DX5ibRg/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><strong>步骤5：绕过WAF</strong></p>
+<p>上传 .user.ini 文件，尝试对安全狗进行绕过</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRefiaD3N05icxSUAdsUoujry1Xrh0CjF1mGUyfSLIicooO7ia36eKric9FBA/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>再次尝试上传木马文件，但是后缀是png的，文件名要与之前上传的.user.ini里auto_prepend_file对应的值一致，即也要是2.png</p>
+<p>发现成功上传木马文件，点击测试连接，提示连接成功</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRAPgP0SOyYy0Pczk8iaol3vWaRd0rux2EcCyPKJQReLUDDX0ibpGiaBoyg/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>点击添加，双击添加的记录即可进入shell</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRdib03trgibAIFDQAZcd7bic1QIUGBicDrgxUtqKVa2FibiabrzaJC0o81dcg/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><strong>步骤6：查找flag</strong></p>
+<p>主机上共有两个flag查看flag.txt文件</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRMhbvU6XyPyQeeNfrscDEt9EaEfFKby52ypFoTfugmyVBx0qebtoOibw/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>查看数据库配置文件，在</p>
+<p>C:/phpstudy_pro/WWW/include/db.php</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRF4jsqBcdzjszQYzuWHlvkiczlqdvoibweBKIHibQmDfKA6zVOgS4picQCg/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><strong>03</strong></p>
+<h2 id="任务三：客服服务平台渗透"><a href="#任务三：客服服务平台渗透" class="headerlink" title="任务三：客服服务平台渗透"></a>任务三：客服服务平台渗透</h2><p><strong>步骤7：xss打cookie</strong></p>
+<p>在博彩网站主站点击【在线客服】</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRHQAgnRGU1byun7AiaZxCN76mfyQYEtjdUQsSSHFbR5zibv3DfKtFUsPA/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>新建项目并查看项目代码，姓名、email以及电话信息任意输入，在留言部分输入以下信息，在xss平台中已经获取到cookie</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRqIEiaDlpebpwmmibROT1NYn9VyvPjiaLvmBKfzicWUdQpNgo9nqm5QYRKA/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><strong>步骤8：后台任意文件读取</strong></p>
+<p>开启burpsuite抓包，访问在线客服系统后台</p>
+<ul>
+<li></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://172.16.15.200:48513/admin/</span><br></pre></td></tr></table></figure>
+
+
+
+<p>将刚刚获取到的cookie进行替换</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRljn9W5ZoUX2j60iaPMc7xgtDh7FKUGHQWduD35XnSUfQBCSke87yX8Q/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>之后点击左上角的Forward，并关闭burpsuite抓包，替换cookie之后成功进入客服系统后台,在后台首页存在flag</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRagYGoeqibCgvX50gCIicWVAbn9ujGY8LLklk4DZTLUV0ID4VBycuLZ7A/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>客服后台存在任意文件读取，需要替换获取到的cookie，成功读取到配置文件</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRy8HYjQhicv1mjNu84vFz2rwSKDsKBGB1WamYtFbBL1MjdGHHGrcFZMQ/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><strong>步骤9：目标端口、目录扫描</strong></p>
+<p>发现目标开放888端口</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRxjKsHaU2Ua4FZayC4FfJJ0FpsyCIvxpmJKic0uRpiawa01WNQ1J5bBrg/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>尝试使用刚刚获取到的用户名密码登录，成功登录系统</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRw7aZ4FQMau4tFMJp38rkickiazhWh2LCG2FKLxoY8SZeWBtsfuWKV1PA/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><strong>步骤10：获取目标shell</strong></p>
+<p>点击【SQL】，将以下语句写入目标，尝试通过写日志的方式写入shell，访问写入的shell</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxR9gLia7fvlpDgDUkm2micSib1zsiaETDvibLhWRNfke3MZvYXy5AIdHDwdzw/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>使用蚁剑连接shell，点击【测试连接】，连接成功</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRshliahMvYUZyWuevIX0qkBHyxsuua5DkfCswYmZ5ewBicpibLyfhvIOuw/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>发现无法执行命令</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxR46Vmklup4uMrFMnalibfwBB8IvVgC22qzw7ybIibK89AytqnMiauNdZYQ/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><strong>步骤11：绕过disable_function</strong></p>
+<p>通过插件绕过disable_functions</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxR71icNXj6iclv6Bz2aoFB6sD2e3aWPiaczH7YnZV5jeVFE1VjgCzjwXDEA/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>双击进入目标，右键打开终端，输入whoami，成功执行命令</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRW7NhAmfvOKL7CWoBBHntnE68v98rbLTnoib12FURxDZQJhIGwxTpcRA/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><strong>步骤12：通过计划任务提权</strong></p>
+<p>查看计划任务，发现root用户会定期执行/tmp/cleanup.py脚本</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxR0Ac5cKwqTryPbLCMDfM5DXSiaxQKFzsupwBfvEugsozk9veWnKBytGg/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>上传cleanup.py并插入恶意的命令</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRbDXg2ic1GiaHqz8H9q7tRZzEIicicCtgsY6nhDexotGqnWzicDzM2iatuXxw/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>上传成功后，等待一分钟执行命令后，自动创建用户，成功获取客服系统服务器root权限</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRXBgnwY1iadKJqYZhx8qGUbNZVZ1JP5XxXZPLdYvmeEWlIZRmQvccy6Q/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>查看flag文件</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRiaPicKNnibRFMODNcsr3libdwdUFoHdnb2CvKwe7FRMODVECBF2qXkby5w/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><strong>04</strong></p>
+<h2 id="任务四：优惠大厅渗透"><a href="#任务四：优惠大厅渗透" class="headerlink" title="任务四：优惠大厅渗透"></a>任务四：优惠大厅渗透</h2><p>发现是目标系统的优惠大厅</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRgAYGdPibqogRTLiaOfCEIjSibt0cCvhbZgpO1EPR96bHPrHYXZ2CkxxMw/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><strong>步骤13：前台sql注入</strong></p>
+<p>在前台【会员登录】处，随意输入账号密码，bp开启抓包</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRgNicoJozf1TtvQm10xdXugbUfvOTOZU4pRbOiciahQyqgCXnKOBuAs3Aw/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>对该数据包进行sql注入测试，发现存在时间盲注，发送如下数据包，会延时5秒返回</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRqTqOlhRQfxPribibz09OcO0aLwUYbe7MAp1EB3RoynUmzyKKiaE5oxDNQ/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>编写脚本跑获取数据库长度和数据库名，执行该脚本获取目标数据库的长度和数据库名</p>
+<ul>
+<li></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 dbs.py</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRbJYbmJlbAgKehzKVruVHMhgxLZjS4nH84Sia0YIjqaFLlibCDHCbackQ/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>尝试写脚本跑数据库的数据表名，发现脚本用&gt;判断会报错，尝试用=判断，可以成功注入出数据表名，脚本如下，跑的很慢，测试的时候，可以把for i in range(0,15)中的0改为12，执行该脚本</p>
+<ul>
+<li></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 tables.py</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRSrs03mFL6RoLES5B6bH3SNY6OWEEKkhkCI9aR36Ozhd4ibbF37fOic7Q/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>发现存在un_admin表，尝试获取该表的列名，将下面的代码写入columns.py中执行该脚本，发现存在username和password字段</p>
+<ul>
+<li></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 columns.py</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRJV4BWccq9N6Hu7fGTVmRCsRJSHRUj4EDJpC7TIgJKbTIZRWzcfOpgA/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>编写脚本获取目标的username和password字段的值，将以下代码写入username.py中，执行改脚本，获取username字段的值</p>
+<ul>
+<li></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 username.py</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxR2zmhnz0FKuKIUEMSFPkQSdkurk3AvADCbVteclaEvEL2UBpa9e6NNA/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>同理，获取password字段值把上面脚本中的username改为password即可，因为密码在数据库存储一般是加密过的，所以字段长度也设置的大一点因为字段比较长，这里也注入的很慢，将上面的代码写入password.py中，执行该文件</p>
+<ul>
+<li></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 password.py</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRyAmvgBqwNRiafIgzFuK3H0oia1eAVicWwa9E3vCMKabgztUnHFHbM3taw/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>获取到后台账号和md5加密的密码</p>
+<ul>
+<li></li>
+<li></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">admin    6fab062fd242430d18aeff4e116edb04 lmb      6e3261f301f41c5f4169cd562b259994</span><br></pre></td></tr></table></figure>
+
+
+
+<p>尝试md5解密，得到admin账号密码为：</p>
+<ul>
+<li></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lmb@123</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRpkQwafyWXmAhW3Picv9pD9ZcERN3oiaQMdXpRfCKicHzkM1vzicibicZ10Dw/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><strong>步骤14：获取后台flag</strong></p>
+<p>上面我们通过前台sql时间盲注获取到目标后台账号密码，但是我们现在还不知道后台地址</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRuK9S2BsbAqRB82rJtbXlic3ibFb4q3YzsQmI1BER20MP8QdO2sKibO40Q/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>输入用户名密码成功登录后台</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxR1wKx4tMNWkukeSeib8E6mBYS7Qruf3bPQkNuYuMPrwexZeMZARVniblQ/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>在后台【系统管理】-&gt;【管理组】-&gt;【管理员】处，发现flag</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRfGuSS37YopMFKZfadQ3zkpgnWeoJNWHRbAPnDicC3NibuQ15EdeJibYvw/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><strong>步骤15：后台任意文件上传</strong></p>
+<p>点击【会员管理】，进入【会员列表】模块，点击【新增假人】</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxR4UFTZhLTb56pxfOQ574Vsb1v7HAQREpp8FrHXG3ofIFfd1wNw8MW2Q/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>发现可以上传图片，开启burpsuite抓包</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRHLOtY48Odibf3rUhoqlwb32d2ecjL0ibjd68geeqPgsB6eiaDWfCRoyEA/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>修改上传文件的后缀为.phtml，并尝试在图片内容中加入一句话木马</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRJyicfR71YxBsxXGKoyGzDAjHrK2XxJvxgdobSsu5FQ1BibiaV2YNkn1icw/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>成功解析php代码</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRicTXl7Q5g49IF6Pic4vBIppmeTJjYLjkFpjqHWOeO9DN8HciaraPr122Q/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>蚁剑连接</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRaaPdIpxhn9QA02A1ibicLGnGia4faI9m6bxibHW5Men1ibfvLLdbCsXQtWw/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>点击【添加】，双击进入目标shell，右键点击【在此处打开终端】</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRsY43Z4nDhjJLA4mPpPr1hoXAttFUGXffs0M74uLkxI7NDfviatfevUg/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>发现不是root权限，本地执行以下命令开启监听</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRGdRtMic5ulGhZqCobMia8fZMqg5LvIYAGakLSWNgVzXrCbYLibSxROW7Q/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>反弹交互式shell</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxR8ibv6nzeibMKlgbqAibvlgq9a4icW77rJibwby1BvugyFHn6kG7w1U71dtQ/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>稍等一会即可成功获取到优惠大厅的交互式shell</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRCo82pUK7en2jb12Og5dahI7UKn5WUzibYfOAE6KnfebAxayEM9jfFiag/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><strong>步骤16：信息收集+ssh密码复用</strong></p>
+<p>对服务器文件进行信息收集，发现数据库配置文件Db.php</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxR4kKAaCKeeZGBwxWHOXdPtA3icTAqbxNmjKZQS36GbvBz9UMM0sbichnw/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>尝试用此密码，登录目标服务器root用户，成功获取目标服务器root权限</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRpdNVyFHEGjSf4r7Zw6ibsPb4oJxo1RxElg1fJWjBmmVxibjtiaRWo0W7A/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>在/root/目录下发现lmb.txt文件，查看该文件，解码之后获取flag</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRt0sMvwkibeicU8KhciaxicfxBcQQLJAk8NBRTAEvFx20rSIJSbg4LOnvBA/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><strong>05</strong></p>
+<h2 id="任务五：贷款平台渗透"><a href="#任务五：贷款平台渗透" class="headerlink" title="任务五：贷款平台渗透"></a>任务五：贷款平台渗透</h2><p>访问上面在apk中发现的另一个网站，发现是http默认页面</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRU6OxcGqibYS08LLhsaw1UJ8v6Z03miaEx8AmRM6g7RKDVdiap3ib3Ratbg/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><strong>步骤17：备份文件获取flag</strong></p>
+<p>通过目录扫描发现存在 dkpt.com.bak 路径，访问目录【/dkpt.com.bak】可获取到flag。</p>
+<ul>
+<li></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 dirsearch.py -e * -u http://172.16.100.10/dkpt/</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRLZAQgsHyznicJCT3jgMtxNUWNDSDIt9aA8S3hfF1ua10H5x2S5gvq3Q/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRWOBnDqvC5mwGerVpgm4Dj2n3RpD4rv1csEBktMdjIWnKASI6eauf1A/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><strong>步骤18：社工信息利用登录后台</strong></p>
+<p>通过目录扫描发现后台地址</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRyhXqFQkxiaM3YicQgcFAtYS56AQBCMkoNK1BBUA8xHbEtukl2W94f3Vw/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>通过前面的flag提示密码可能会和个人信息有关，观察首页相关信息，发现出现过几次联系电话 18855667788，使用该手机号码进行社工信息收集，发现历史密码 1qaz@WSX!@#$</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRY1y9yBYc498Y0vagL6nuy0F0BiadZdhiaWZyc8VKNYupugXwWuYiaepsg/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxR5OMgMDpibfabb3GfRP2rq81LAZGibkiaK5GRV0PGWbt6nGiaCTib6jU8H8Q/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><strong>步骤19：SQL注入获取目标shell</strong></p>
+<p>使用获取到的历史密码登录，在后台会员管理【 madmin.php?m=User&amp;a=edit&amp;id=】接口处存在SQL注入。</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxR9fwUia8HIzgKHScMCQV9IAlDQhyoMvQDgcqYuGXibyjDUpUJy6gAFvwA/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>在该目录下执行以下命令，发现存在sql注入</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRMA15m7mdJ4cGPVgDYEJIELPTopHej9ha55WAfXKLFiaico77ibGPVPYFA/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRFXtVODxcuZPaCvDpmL5ok5657FJbbBFLzhibOUNmHZ6f7RIRspURsBQ/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>猜测linux 常见目录/var/www/html/dkpt</p>
+<p>尝试直接写入shell</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRImmaib5931wKxcKdtEsuB6tla23b4AkwGFsbpOal0Dn0Zycoia5RNCsg/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>访问shell</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxREg0g7I2S0UxlCkG3FVPjebWwfno08SeSWaHW6zmpPxxJibkmd9z0Q6w/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>执行 whoami 命令，发现是apache权限</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRtLFpxUh7JBZnnGFnMkTN3l4wJ8IWNx9wR8Qb88ALIFrfFDQU1sAYdw/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><strong>步骤20：密码复用获取root权限</strong></p>
+<p>查看/home目录发现存在 dkpt 用户</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRfh4ry4IHrmUYN80lJzMCWSfaSPIIGflSibqRzuSFCFR2OsRoVVMFY8Q/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>查看数据库配置文件</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRxH3NASlbDe233Yhx93VLiaZlFr4T7p5J6YX7uCKaXjGLTEakmzkIEVA/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>连接数据库</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRAibpx5BuwJtryaicZ9GrSDib6ywXRG4ESsIUguUB58yAWmCQ4FWgHuuOQ/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>发现另一个管理员账号admin888的密码</p>
+<ul>
+<li></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">d42410e5cea9e0c3fae5664e1aa609a4</span><br></pre></td></tr></table></figure>
+
+
+
+<p>进行md5解密，利用该密码尝试登录dkpt账号</p>
+<ul>
+<li></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh dkpt@172.16.100.10</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRTGKbtH7wz7PLvQ0spPvGyg8F4UvCAiaPic97XaKuWDVDyibsXrryEXsuw/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<ul>
+<li></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo su</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRUzWLTkvYpAWff8w1y9uceN81SVqr4JcHjYop8khQX18qbOpCxlbMAw/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>查看flag文件</p>
+<ul>
+<li></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /root/flag.txt</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>06</strong></p>
+<h2 id="任务六：支付平台渗透"><a href="#任务六：支付平台渗透" class="headerlink" title="任务六：支付平台渗透"></a>任务六：支付平台渗透</h2><p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRiadwzaeiblhGpK6k8KO9f2z8cbelChib39EoejzGLeyhsBZ5ibpwEydufA/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>对目标目录扫描，扫描目录发现存在robots.txt和Admin跳转</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxR1afialgHgBqHgL7aiaT6FtNldq2pqOTAZFZVlPbDRQOOsiaob7X2HShfg/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>访问robots.txt文件</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRaJGD0y5Hok3yibbHCKd9Zsn5QJcRFLLq46Flgkb9bjadqTiaibJHDsQxg/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>robots.txt文件中发现Core目录，访问之后发现存在目录遍历</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxR3D2xP1QyibDgns6ogtZ3kMC4EIzU43t22k13MJRddiaQTKlIhfaoY6YA/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>访问Admin目录</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxR12tVGPSWNJcJol2Pvq2R1yp2dDQbKEsFCPLu1uiamCKzMlb1HdOiakTg/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><strong>步骤22：命令执行</strong></p>
+<p>测试发现在登录post包体中存在命令执行</p>
+<p>密码随意输入，点击登录前开启burpsuite抓包，右键【Send to Repeater】</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRlscJHbJTDqhRlKDicZrApQicAD5EZoW5tiag6ibh52yaewicYX8cfIicw7Lg/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>尝试执行系统命令</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRpbhe17gI42w81pYiagwXLZX4IiaHSPx4DZvmZRJxdtfZOGI6P3E3XiaAw/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRCsU8Juhhu85GJgWq215aRXBHaQMqL5xzuOxgooHpp2nOD2mCxmWESg/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>远程下载webshell到目标服务器，将以下内容写入桌面的11.php</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRmXkOiblgwq6ccZkmMddWB819qYj9dOxtbG3JTZBWRqHfY9ZMmOiatZRg/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>远程下载该webshell文件到目标服务器（地址为攻击机器的本地地址），成功下载11.php到目标服务器</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRV2YzuVa2kIlMP2p0uXWSicNoKMofmoFGLhys0F31YOqZpp5ZMLNv4MQ/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>蚁剑成功连接到目标shell</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRZECZAfHXN2ARBKIy5ZPy01SIX3KkzKCFaMtysK4iawHiaN8GxxPNfvPw/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><strong>步骤23：获取数据库flag</strong></p>
+<p>点击【添加】，双击进入目标shell</p>
+<p>对目标文件进行信息收集，发现配置文件，在配置文件中发现数据库连接账户密码</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRrYgSgicAyGBh4Gvq8goVWUsVicwY2aWic46nXc8gSzYHiaq0FsSUpLrdgA/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>输入支付平台的ip，以及上面发现的数据库连接密码，连接到数据库</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRAIojoHxIfZFNO62rMOicIA10rrm9ib2VQNQ6kxvHT7BtibL9OVeHiawX5A/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>双击进入数据库，在pay_flag表发现flag文件</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRI17Y8QnDfBAkhibZDKznNS8LwDBg6WJxFLqWN6Cialggg4biaAGvjsibiag/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><strong>步骤24：获取flag</strong></p>
+<p>返回到获取的支付平台的shell中，由于权限太低，属于apache用户，我们尝试提权</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRSSVScysMbiczdJF4aTYTGiaeia0WxPQ8cqZeyjOjZudOP0Gt9R7rwvCzQ/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>本地执行以下命令开启监听</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxR0GUYkWRib1e5jx6S5ic2e9B0ybJ7fn3nZ2fbvH8icwJriaUnDiageoIVsBg/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>执行完之后，返回查看我们刚刚创建的监听，发现已经成功监听到，稍等一会即可获取到目标的交互式shell</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRJLyaw9YU9cqu0BjtNs0ic0zxgAdTtIRhUqGHKJ4vF1KP3p3M5Nia7fDw/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>在获取到的交互式shell中输入以下命令，查看目标的suid权限</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRD6NkNRKDV2LDayymu4ia3Ur8hIM2jn1FgmZ0YuHPLY2icbxhyJG99c2A/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>可以看到find，su，sudo等都存在suid权限，尝试提权</p>
+<p>执行以下命令，通过find进行suid提权，获取到root权限</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/UKfB12o0Jd47D9glTiaCicnHhmrfpxJZxRyzj6bbchgLAyHlHH28aCMHkSgOR02G69e7Hwibf0LSEKpUQApZvPXEQ/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>查看root目录，发现flag.txt文件，获取到目标的flag</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">惜缘怀古</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://xiyuanhuaigu.gitee.io/2023/11/06/2023%E8%93%9D%E5%B8%BD%E6%9D%AF%E5%86%B3%E8%B5%9BWP/">https://xiyuanhuaigu.gitee.io/2023/11/06/2023%E8%93%9D%E5%B8%BD%E6%9D%AF%E5%86%B3%E8%B5%9BWP/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://xiyuanhuaigu.gitee.io" target="_blank">惜缘怀古的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://xyhutc.oss-cn-qingdao.aliyuncs.com/giteetuchuang/20231106163334.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2023/10/20/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CRE/"><img class="next-cover" src="https://xyhutc.oss-cn-qingdao.aliyuncs.com/giteetuchuang/c78ed35b1e3999643d52a652257558af0a15b4c9_raw.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">攻防世界RE</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/2.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">惜缘怀古</div><div class="author-info__description">唯有那份炫目，未曾忘却</div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">66</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%94%BB%E5%87%BB%E8%B7%AF%E7%BA%BF%E5%9B%BE"><span class="toc-number">1.</span> <span class="toc-text">攻击路线图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%96%E7%BD%91%E5%8C%BA"><span class="toc-number">2.</span> <span class="toc-text">外网区</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%BB%E5%8A%A1%E4%B8%80%EF%BC%9A%E5%BC%95%E6%B5%81APK%E6%B8%97%E9%80%8F"><span class="toc-number">2.1.</span> <span class="toc-text">任务一：引流APK渗透</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%BB%E5%8A%A1%E4%BA%8C%EF%BC%9A%E5%8D%9A%E5%BD%A9%E7%BD%91%E7%AB%99%E4%B8%BB%E7%AB%99%E6%B8%97%E9%80%8F"><span class="toc-number">2.2.</span> <span class="toc-text">任务二：博彩网站主站渗透</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%BB%E5%8A%A1%E4%B8%89%EF%BC%9A%E5%AE%A2%E6%9C%8D%E6%9C%8D%E5%8A%A1%E5%B9%B3%E5%8F%B0%E6%B8%97%E9%80%8F"><span class="toc-number">2.3.</span> <span class="toc-text">任务三：客服服务平台渗透</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%BB%E5%8A%A1%E5%9B%9B%EF%BC%9A%E4%BC%98%E6%83%A0%E5%A4%A7%E5%8E%85%E6%B8%97%E9%80%8F"><span class="toc-number">2.4.</span> <span class="toc-text">任务四：优惠大厅渗透</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%BB%E5%8A%A1%E4%BA%94%EF%BC%9A%E8%B4%B7%E6%AC%BE%E5%B9%B3%E5%8F%B0%E6%B8%97%E9%80%8F"><span class="toc-number">2.5.</span> <span class="toc-text">任务五：贷款平台渗透</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%BB%E5%8A%A1%E5%85%AD%EF%BC%9A%E6%94%AF%E4%BB%98%E5%B9%B3%E5%8F%B0%E6%B8%97%E9%80%8F"><span class="toc-number">2.6.</span> <span class="toc-text">任务六：支付平台渗透</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/11/06/2023%E8%93%9D%E5%B8%BD%E6%9D%AF%E5%86%B3%E8%B5%9BWP/" title="2023蓝帽杯决赛WP"><img src="https://xyhutc.oss-cn-qingdao.aliyuncs.com/giteetuchuang/20231106163334.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2023蓝帽杯决赛WP"/></a><div class="content"><a class="title" href="/2023/11/06/2023%E8%93%9D%E5%B8%BD%E6%9D%AF%E5%86%B3%E8%B5%9BWP/" title="2023蓝帽杯决赛WP">2023蓝帽杯决赛WP</a><time datetime="2023-11-06T08:31:51.000Z" title="发表于 2023-11-06 16:31:51">2023-11-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/10/20/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CRE/" title="攻防世界RE"><img src="https://xyhutc.oss-cn-qingdao.aliyuncs.com/giteetuchuang/c78ed35b1e3999643d52a652257558af0a15b4c9_raw.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="攻防世界RE"/></a><div class="content"><a class="title" href="/2023/10/20/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CRE/" title="攻防世界RE">攻防世界RE</a><time datetime="2023-10-20T12:38:32.000Z" title="发表于 2023-10-20 20:38:32">2023-10-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/09/22/%E5%AE%89%E5%8D%93%E5%B8%B8%E7%94%A8%E7%9B%AE%E5%BD%95/" title="安卓常用目录"><img src="https://xyhutc.oss-cn-qingdao.aliyuncs.com/giteetuchuang/mmexport1694863328916.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="安卓常用目录"/></a><div class="content"><a class="title" href="/2023/09/22/%E5%AE%89%E5%8D%93%E5%B8%B8%E7%94%A8%E7%9B%AE%E5%BD%95/" title="安卓常用目录">安卓常用目录</a><time datetime="2023-09-22T01:27:02.000Z" title="发表于 2023-09-22 09:27:02">2023-09-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/09/22/010Editor%E7%A0%B4%E8%A7%A3/" title="010Editor破解"><img src="https://xyhutc.oss-cn-qingdao.aliyuncs.com/giteetuchuang/1694867487605.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="010Editor破解"/></a><div class="content"><a class="title" href="/2023/09/22/010Editor%E7%A0%B4%E8%A7%A3/" title="010Editor破解">010Editor破解</a><time datetime="2023-09-22T00:33:10.000Z" title="发表于 2023-09-22 08:33:10">2023-09-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/08/24/%E6%9F%90APP%E7%9A%84%E9%80%86%E5%90%91%E5%88%86%E6%9E%90/" title="某APP的逆向分析"><img src="https://xyhutc.oss-cn-qingdao.aliyuncs.com/giteetuchuang/a4c8982faff8839d06cc010c864e02e8092efb23_raw.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="某APP的逆向分析"/></a><div class="content"><a class="title" href="/2023/08/24/%E6%9F%90APP%E7%9A%84%E9%80%86%E5%90%91%E5%88%86%E6%9E%90/" title="某APP的逆向分析">某APP的逆向分析</a><time datetime="2023-08-24T14:02:11.000Z" title="发表于 2023-08-24 22:02:11">2023-08-24</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By 惜缘怀古</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
