@@ -1,0 +1,237 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>折腾日记 | 惜缘怀古的博客</title><meta name="keywords" content="惜缘怀古，博客"><meta name="author" content="惜缘怀古"><meta name="copyright" content="惜缘怀古"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="本机配置：   CPU E5-2698B v3    显卡 V100 32G   内存 16G D3   操作系统 Ubuntu 22.04   V100检测v100检测B站上教程很多，这里只提一点，有些贩子会重置ECC错误，建议用到手之后压测一段时间后再看ECC是否报错。  V100 驱动安装检测驱动和硬件12lspci | grep V100lsmod | grep nvidia  检测当前系">
+<meta property="og:type" content="article">
+<meta property="og:title" content="折腾日记">
+<meta property="og:url" content="https://xiyuanhuaigu.github.io/2026/02/02/v100%E6%8A%98%E8%85%BE%E6%97%A5%E8%AE%B0/index.html">
+<meta property="og:site_name" content="惜缘怀古的博客">
+<meta property="og:description" content="本机配置：   CPU E5-2698B v3    显卡 V100 32G   内存 16G D3   操作系统 Ubuntu 22.04   V100检测v100检测B站上教程很多，这里只提一点，有些贩子会重置ECC错误，建议用到手之后压测一段时间后再看ECC是否报错。  V100 驱动安装检测驱动和硬件12lspci | grep V100lsmod | grep nvidia  检测当前系">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://xiyuanhuaigu.github.io/img/top_img.jpg">
+<meta property="article:published_time" content="2026-02-02T09:20:54.000Z">
+<meta property="article:modified_time" content="2026-02-02T13:26:13.983Z">
+<meta property="article:author" content="惜缘怀古">
+<meta property="article:tag" content="惜缘怀古，博客">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://xiyuanhuaigu.github.io/img/top_img.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://xiyuanhuaigu.github.io/2026/02/02/v100%E6%8A%98%E8%85%BE%E6%97%A5%E8%AE%B0/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '折腾日记',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2026-02-02 21:26:13'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/2.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">75</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/top_img.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">惜缘怀古的博客</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">折腾日记</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-02-02T09:20:54.000Z" title="发表于 2026-02-02 17:20:54">2026-02-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-02-02T13:26:13.983Z" title="更新于 2026-02-02 21:26:13">2026-02-02</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">894</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>3分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="折腾日记"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="本机配置："><a href="#本机配置：" class="headerlink" title="本机配置："></a>本机配置：</h2><table>
+<thead>
+<tr>
+<th>CPU</th>
+<th>E5-2698B v3</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>显卡</td>
+<td>V100 32G</td>
+</tr>
+<tr>
+<td>内存</td>
+<td>16G D3</td>
+</tr>
+<tr>
+<td>操作系统</td>
+<td>Ubuntu 22.04</td>
+</tr>
+</tbody></table>
+<h2 id="V100检测"><a href="#V100检测" class="headerlink" title="V100检测"></a>V100检测</h2><p>v100检测B站上教程很多，这里只提一点，有些贩子会重置ECC错误，建议用到手之后压测一段时间后再看ECC是否报错。 </p>
+<h2 id="V100-驱动安装"><a href="#V100-驱动安装" class="headerlink" title="V100 驱动安装"></a>V100 驱动安装</h2><h3 id="检测驱动和硬件"><a href="#检测驱动和硬件" class="headerlink" title="检测驱动和硬件"></a>检测驱动和硬件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lspci | grep V100</span><br><span class="line">lsmod | grep nvidia</span><br></pre></td></tr></table></figure>
+
+<h3 id="检测当前系统内核"><a href="#检测当前系统内核" class="headerlink" title="检测当前系统内核"></a>检测当前系统内核</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname -r</span><br></pre></td></tr></table></figure>
+
+<h3 id="禁用核心显卡驱动"><a href="#禁用核心显卡驱动" class="headerlink" title="禁用核心显卡驱动"></a>禁用核心显卡驱动</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo bash -c &quot;echo &#x27;blacklist nouveau&#x27; &gt;&gt; /etc/modprobe.d/blacklist-nouveau.conf&quot;</span><br><span class="line">sudo bash -c &quot;echo &#x27;options nouveau modeset=0&#x27; &gt;&gt; /etc/modprobe.d/blacklist-nouveau.conf&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="更新initramfs-重启"><a href="#更新initramfs-重启" class="headerlink" title="更新initramfs 重启"></a>更新initramfs 重启</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo update-initramfs -u &amp;&amp; sudo reboot</span><br></pre></td></tr></table></figure>
+
+<h3 id="验证是否禁用（无输出即可）"><a href="#验证是否禁用（无输出即可）" class="headerlink" title="验证是否禁用（无输出即可）"></a>验证是否禁用（无输出即可）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsmod | grep nouveau</span><br></pre></td></tr></table></figure>
+
+<h3 id="检查gcc版本"><a href="#检查gcc版本" class="headerlink" title="检查gcc版本"></a>检查gcc版本</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">gcc --version</span><br><span class="line">sudo apt install gcc-12 g++-12</span><br><span class="line"># 设置 GCC 12.3 为默认编译器 优先级设置</span><br><span class="line">sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-12 100</span><br><span class="line">sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-12 100</span><br></pre></td></tr></table></figure>
+
+<h3 id="清理驱动"><a href="#清理驱动" class="headerlink" title="清理驱动"></a>清理驱动</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 彻底清除所有 NVIDIA 和 CUDA 相关包</span><br><span class="line">sudo apt purge *nvidia* *cuda*</span><br></pre></td></tr></table></figure>
+
+<h3 id="升级内核"><a href="#升级内核" class="headerlink" title="升级内核"></a>升级内核</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt upgrade</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装制定版本内核以及扩展功能"><a href="#安装制定版本内核以及扩展功能" class="headerlink" title="安装制定版本内核以及扩展功能"></a>安装制定版本内核以及扩展功能</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install -y linux-image-6.8.0-85-generic \</span><br><span class="line">          linux-headers-6.8.0-85-generic \</span><br><span class="line">          linux-modules-extra-6.8.0-85-generic</span><br></pre></td></tr></table></figure>
+
+<p>重启电脑，并进行检测</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 检查内核文件是否已安装</span><br><span class="line">ls /boot/vmlinuz-6.8*</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://xyhutc.oss-cn-qingdao.aliyuncs.com/giteetuchuang/20260202174857.png"></p>
+<p>验证内核版本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname -r</span><br></pre></td></tr></table></figure>
+
+<h2 id="安装NVIDIA驱动"><a href="#安装NVIDIA驱动" class="headerlink" title="安装NVIDIA驱动"></a>安装NVIDIA驱动</h2><p>安装dkms</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install dkms</span><br></pre></td></tr></table></figure>
+
+<p>添加nvidia驱动源</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:graphics-drivers/ppa</span><br><span class="line">sudo apt update</span><br><span class="line">ubuntu-drivers devices</span><br></pre></td></tr></table></figure>
+
+<p>建议安装后面带recommended的</p>
+<p><img src="https://xyhutc.oss-cn-qingdao.aliyuncs.com/giteetuchuang/20260202204637.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install nvidia-driver-535</span><br></pre></td></tr></table></figure>
+
+<h1 id="CUDA安装"><a href="#CUDA安装" class="headerlink" title="CUDA安装"></a>CUDA安装</h1><p>这里我主要用途是跑AI大模型，我推荐12.8</p>
+<p>打开官网，这里我选的是12.8.0</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.nvidia.com/cuda-toolkit-archive</span><br></pre></td></tr></table></figure>
+
+<p>按照配置选择</p>
+<p><img src="https://xyhutc.oss-cn-qingdao.aliyuncs.com/giteetuchuang/20260202205551.png"></p>
+<p>按照官网的命令一步步执行就行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/cuda-ubuntu2204.pin</span><br><span class="line">sudo mv cuda-ubuntu2204.pin /etc/apt/preferences.d/cuda-repository-pin-600</span><br><span class="line">wget https://developer.download.nvidia.com/compute/cuda/12.8.0/local_installers/cuda-repo-ubuntu2204-12-8-local_12.8.0-570.86.10-1_amd64.deb</span><br><span class="line">sudo dpkg -i cuda-repo-ubuntu2204-12-8-local_12.8.0-570.86.10-1_amd64.deb</span><br><span class="line">sudo cp /var/cuda-repo-ubuntu2204-12-8-local/cuda-*-keyring.gpg /usr/share/keyrings/</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get -y install cuda-toolkit-12-8</span><br></pre></td></tr></table></figure>
+
+<p>完事后编辑</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.bashrc</span><br></pre></td></tr></table></figure>
+
+<p>添加</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export PATH=$PATH:/usr/local/cuda-12/bin</span><br><span class="line">export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-12/lib64</span><br></pre></td></tr></table></figure>
+
+<p>保存退出后</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ~/.bashrc</span><br></pre></td></tr></table></figure>
+
+<p>最后终端输入<code>nvcc -V</code>即可查看CUDA版本</p>
+<h1 id="NVIDIA-Container-Toolkit（需预先安装docker）"><a href="#NVIDIA-Container-Toolkit（需预先安装docker）" class="headerlink" title="NVIDIA Container Toolkit（需预先安装docker）"></a>NVIDIA Container Toolkit（需预先安装docker）</h1><p>由于作者需要在docker里使用GPU，所以要安装NVIDIA Container Toolkit，如果不使用docke本步可以忽略</p>
+<p>由于我服务器连不上外网，下载速度很低，所以采用离线安装的方法</p>
+<h2 id="在NVIDIA的GitHub主页找到Ubuntu系统对应的NVIDIA-Container-Toolkit安装包"><a href="#在NVIDIA的GitHub主页找到Ubuntu系统对应的NVIDIA-Container-Toolkit安装包" class="headerlink" title="在NVIDIA的GitHub主页找到Ubuntu系统对应的NVIDIA Container Toolkit安装包"></a>在NVIDIA的<a href="https://link.zhihu.com/?target=https://github.com/NVIDIA/libnvidia-container/tree/gh-pages/stable/deb/amd64">GitHub主页</a>找到Ubuntu系统对应的NVIDIA Container Toolkit安装包</h2><p>找到以下版本的包</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">libnvidia-container1.18.0-1_amd64.deb           # 基础库包，提供了最基本的功能，其他包都依赖于它</span><br><span class="line">libnvidia-container-tools_1.18.0-1_amd64.deb      # 基础工具包，依赖于 libnvidia-container1</span><br><span class="line">nvidia-container-toolkit-base_1.18.0-1_amd64.deb  # 基础组件包，依赖于前面的包</span><br><span class="line">nvidia-container-toolkit_1.18.0-1_amd64.deb       # 主要的工具包，依赖于以上所有包</span><br><span class="line">libnvidia-container1-dbg_1.18.0-1_amd64.deb       # 调试符号包，只在调试问题时使用</span><br><span class="line">libnvidia-container-dev_1.18.0-1_amd64.deb        # 开发包，只在进行开发时使用</span><br></pre></td></tr></table></figure>
+
+<p>其中最后两个安装包可以选择不下载和不安装</p>
+<p>上传到服务器后执行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg -i libnvidia-container1.18.0-1-1_amd64.deb  </span><br><span class="line">sudo dpkg -i libnvidia-container-tools_1.18.0-1_amd64.deb</span><br><span class="line">sudo dpkg -i nvidia-container-toolkit-base_1.18.0-1_amd64.deb</span><br><span class="line">sudo dpkg -i nvidia-container-toolkit_1.18.0-1_amd64.deb</span><br></pre></td></tr></table></figure>
+
+<h2 id="查看NVIDIA-Container-Toolkit的版本以验证是否安装成功"><a href="#查看NVIDIA-Container-Toolkit的版本以验证是否安装成功" class="headerlink" title="查看NVIDIA Container Toolkit的版本以验证是否安装成功"></a>查看NVIDIA Container Toolkit的版本以验证是否安装成功</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvidia-ctk --version</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://xyhutc.oss-cn-qingdao.aliyuncs.com/giteetuchuang/20260202210451.png"></p>
+<h2 id="设置Docker默认使用NVIDIA-runtime"><a href="#设置Docker默认使用NVIDIA-runtime" class="headerlink" title="设置Docker默认使用NVIDIA runtime"></a>设置Docker默认使用NVIDIA runtime</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nvidia-ctk runtime configure --runtime=docker</span><br></pre></td></tr></table></figure>
+
+<h2 id="重启Docker"><a href="#重启Docker" class="headerlink" title="重启Docker"></a>重启Docker</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart docker</span><br></pre></td></tr></table></figure>
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">惜缘怀古</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://xiyuanhuaigu.github.io/2026/02/02/v100%E6%8A%98%E8%85%BE%E6%97%A5%E8%AE%B0/">https://xiyuanhuaigu.github.io/2026/02/02/v100%E6%8A%98%E8%85%BE%E6%97%A5%E8%AE%B0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://xiyuanhuaigu.github.io" target="_blank">惜缘怀古的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/img/top_img.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2025/02/26/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"><img class="next-cover" src="https://xyhutc.oss-cn-qingdao.aliyuncs.com/giteetuchuang/127641918_p0_master1200.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">机器学习</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/2.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">惜缘怀古</div><div class="author-info__description">唯有那份炫目，未曾忘却</div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">75</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xiyuanhuaigu"><i></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">唯有那份炫目，未曾忘却</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%9C%BA%E9%85%8D%E7%BD%AE%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">本机配置：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#V100%E6%A3%80%E6%B5%8B"><span class="toc-number">2.</span> <span class="toc-text">V100检测</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#V100-%E9%A9%B1%E5%8A%A8%E5%AE%89%E8%A3%85"><span class="toc-number">3.</span> <span class="toc-text">V100 驱动安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A3%80%E6%B5%8B%E9%A9%B1%E5%8A%A8%E5%92%8C%E7%A1%AC%E4%BB%B6"><span class="toc-number">3.1.</span> <span class="toc-text">检测驱动和硬件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A3%80%E6%B5%8B%E5%BD%93%E5%89%8D%E7%B3%BB%E7%BB%9F%E5%86%85%E6%A0%B8"><span class="toc-number">3.2.</span> <span class="toc-text">检测当前系统内核</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A6%81%E7%94%A8%E6%A0%B8%E5%BF%83%E6%98%BE%E5%8D%A1%E9%A9%B1%E5%8A%A8"><span class="toc-number">3.3.</span> <span class="toc-text">禁用核心显卡驱动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0initramfs-%E9%87%8D%E5%90%AF"><span class="toc-number">3.4.</span> <span class="toc-text">更新initramfs 重启</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AA%8C%E8%AF%81%E6%98%AF%E5%90%A6%E7%A6%81%E7%94%A8%EF%BC%88%E6%97%A0%E8%BE%93%E5%87%BA%E5%8D%B3%E5%8F%AF%EF%BC%89"><span class="toc-number">3.5.</span> <span class="toc-text">验证是否禁用（无输出即可）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A3%80%E6%9F%A5gcc%E7%89%88%E6%9C%AC"><span class="toc-number">3.6.</span> <span class="toc-text">检查gcc版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B8%85%E7%90%86%E9%A9%B1%E5%8A%A8"><span class="toc-number">3.7.</span> <span class="toc-text">清理驱动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%87%E7%BA%A7%E5%86%85%E6%A0%B8"><span class="toc-number">3.8.</span> <span class="toc-text">升级内核</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%88%B6%E5%AE%9A%E7%89%88%E6%9C%AC%E5%86%85%E6%A0%B8%E4%BB%A5%E5%8F%8A%E6%89%A9%E5%B1%95%E5%8A%9F%E8%83%BD"><span class="toc-number">3.9.</span> <span class="toc-text">安装制定版本内核以及扩展功能</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85NVIDIA%E9%A9%B1%E5%8A%A8"><span class="toc-number">4.</span> <span class="toc-text">安装NVIDIA驱动</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CUDA%E5%AE%89%E8%A3%85"><span class="toc-number"></span> <span class="toc-text">CUDA安装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#NVIDIA-Container-Toolkit%EF%BC%88%E9%9C%80%E9%A2%84%E5%85%88%E5%AE%89%E8%A3%85docker%EF%BC%89"><span class="toc-number"></span> <span class="toc-text">NVIDIA Container Toolkit（需预先安装docker）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8NVIDIA%E7%9A%84GitHub%E4%B8%BB%E9%A1%B5%E6%89%BE%E5%88%B0Ubuntu%E7%B3%BB%E7%BB%9F%E5%AF%B9%E5%BA%94%E7%9A%84NVIDIA-Container-Toolkit%E5%AE%89%E8%A3%85%E5%8C%85"><span class="toc-number">1.</span> <span class="toc-text">在NVIDIA的GitHub主页找到Ubuntu系统对应的NVIDIA Container Toolkit安装包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8BNVIDIA-Container-Toolkit%E7%9A%84%E7%89%88%E6%9C%AC%E4%BB%A5%E9%AA%8C%E8%AF%81%E6%98%AF%E5%90%A6%E5%AE%89%E8%A3%85%E6%88%90%E5%8A%9F"><span class="toc-number">2.</span> <span class="toc-text">查看NVIDIA Container Toolkit的版本以验证是否安装成功</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AEDocker%E9%BB%98%E8%AE%A4%E4%BD%BF%E7%94%A8NVIDIA-runtime"><span class="toc-number">3.</span> <span class="toc-text">设置Docker默认使用NVIDIA runtime</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8D%E5%90%AFDocker"><span class="toc-number">4.</span> <span class="toc-text">重启Docker</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/02/02/v100%E6%8A%98%E8%85%BE%E6%97%A5%E8%AE%B0/" title="折腾日记"><img src="/img/top_img.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="折腾日记"/></a><div class="content"><a class="title" href="/2026/02/02/v100%E6%8A%98%E8%85%BE%E6%97%A5%E8%AE%B0/" title="折腾日记">折腾日记</a><time datetime="2026-02-02T09:20:54.000Z" title="发表于 2026-02-02 17:20:54">2026-02-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/02/26/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" title="机器学习"><img src="https://xyhutc.oss-cn-qingdao.aliyuncs.com/giteetuchuang/127641918_p0_master1200.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="机器学习"/></a><div class="content"><a class="title" href="/2025/02/26/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" title="机器学习">机器学习</a><time datetime="2025-02-26T01:48:21.000Z" title="发表于 2025-02-26 09:48:21">2025-02-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/02/15/%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%E7%99%BE%E4%BE%8B/" title="安卓逆向百例"><img src="https://xyhutc.oss-cn-qingdao.aliyuncs.com/giteetuchuang/127037840_p0_master1200.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="安卓逆向百例"/></a><div class="content"><a class="title" href="/2025/02/15/%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%E7%99%BE%E4%BE%8B/" title="安卓逆向百例">安卓逆向百例</a><time datetime="2025-02-15T08:31:06.000Z" title="发表于 2025-02-15 16:31:06">2025-02-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/01/09/Prometheus-Grafana%E6%90%AD%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8/" title="Prometheus+Grafana搭建和使用"><img src="https://xyhutc.oss-cn-qingdao.aliyuncs.com/giteetuchuang/127077174_p0_master1200.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Prometheus+Grafana搭建和使用"/></a><div class="content"><a class="title" href="/2025/01/09/Prometheus-Grafana%E6%90%AD%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8/" title="Prometheus+Grafana搭建和使用">Prometheus+Grafana搭建和使用</a><time datetime="2025-01-09T11:06:16.000Z" title="发表于 2025-01-09 19:06:16">2025-01-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/12/27/%E5%8D%8E%E4%B8%BA%E6%95%B0%E9%80%9A%E5%AE%9E%E4%B9%A0/" title="华为数通实习"><img src="https://xyhutc.oss-cn-qingdao.aliyuncs.com/giteetuchuang/127642857_p0_master1200.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="华为数通实习"/></a><div class="content"><a class="title" href="/2024/12/27/%E5%8D%8E%E4%B8%BA%E6%95%B0%E9%80%9A%E5%AE%9E%E4%B9%A0/" title="华为数通实习">华为数通实习</a><time datetime="2024-12-27T01:15:01.000Z" title="发表于 2024-12-27 09:15:01">2024-12-27</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2026 By 惜缘怀古</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
