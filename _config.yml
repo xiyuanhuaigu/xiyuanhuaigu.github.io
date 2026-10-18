@@ -3,11 +3,11 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 我的博客
-subtitle: '记录 · 思考 · 分享'
-description: '个人技术博客'
-keywords:
-author: v_bizhiyuan
+title: 惜缘怀古的博客
+subtitle: '唯有那份炫目，未曾忘却'
+description: '唯有那份炫目，未曾忘却'
+keywords: 惜缘怀古，博客
+author: 惜缘怀古
 language: zh-CN
 timezone: 'Asia/Shanghai'
 
