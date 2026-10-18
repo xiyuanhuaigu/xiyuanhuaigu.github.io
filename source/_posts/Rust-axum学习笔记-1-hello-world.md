@@ -2,8 +2,6 @@
 title: "Rust:axum学习笔记(1) hello world"
 date: 2024-01-18 10:19:41
 ---
-# Rust:axum学习笔记(1) hello world
-
 [axum](https://github.com/tokio-rs/axum)是Rust生态的web框架新秀，虽然项目成立不久，但github上的star数已超2.8k,其底层依赖的是高性能的[Tokio](https://github.com/tokio-rs/tokio)，Tokio这货就不多说了，借用[知乎《深入浅出Rust异步编程之Tokio》](https://zhuanlan.zhihu.com/p/107820568?from_voters_page=true)上的一张图：
 
 ![img](https://img2020.cnblogs.com/blog/27612/202112/27612-20211226204451793-2114282534.png)

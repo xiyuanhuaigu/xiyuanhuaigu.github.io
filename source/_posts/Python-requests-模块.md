@@ -2,8 +2,6 @@
 title: "Python requests 模块"
 date: 2022-09-24 19:45:30
 ---
-# Python requests 模块
-
 导入 requests 包  
  **import** requests
 

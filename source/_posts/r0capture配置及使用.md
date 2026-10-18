@@ -2,8 +2,6 @@
 title: "r0capture配置及使用"
 date: 2023-08-15 21:59:35
 ---
-# r0capture配置及使用
-
 ## 下载
 
 github地址：<https://github.com/r0ysue/r0capture>

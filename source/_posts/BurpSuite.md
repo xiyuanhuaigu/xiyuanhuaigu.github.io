@@ -2,8 +2,6 @@
 title: "BurpSuite 的安装"
 date: 2022-01-08 19:37:34
 ---
-# BurpSuite 的安装
-
 以下内容仅供交流学习，支持正版  
 参考链接<https://www.sqlsec.com/2020/10/winbp.html>  
  <https://blog.csdn.net/dantesite/article/details/107916493>
