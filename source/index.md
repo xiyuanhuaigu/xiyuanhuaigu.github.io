@@ -1,6 +1,6 @@
 ---
 title: 首页
-layout: page
+layout: home
 ---
 
 博客内容已清空，正在重新整理。
